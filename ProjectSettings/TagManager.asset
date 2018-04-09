@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Damage
   - Enemy
+  - PickUp
+  - Button
   layers:
   - Default
   - TransparentFX
