@@ -27,8 +27,8 @@ public class PlayerCameraController : MonoBehaviour
 
 	void Update()
 	{
-		currentX += Input.GetAxis("Camera X") * sensitivityX;
-		currentY += Input.GetAxis("Camera Y") * sensitivityY;
+		currentX += Input.GetAxis("Mouse X") * sensitivityX;
+		currentY += Input.GetAxis("Mouse Y") * sensitivityY;
 
 		currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
 	}
