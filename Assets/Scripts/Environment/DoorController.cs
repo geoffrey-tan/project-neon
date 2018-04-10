@@ -6,6 +6,7 @@ public class DoorController : MonoBehaviour
 {
 	private Animator anim;
 	public bool doorLock;
+	public bool securedLock;
 
 	void Start()
 	{
@@ -16,7 +17,7 @@ public class DoorController : MonoBehaviour
 
 	void OnTriggerEnter()
 	{
-		if (!doorLock)
+		if (!doorLock && !securedLock)
 		{
 			anim.SetBool("character_nearby", true);
 		}
@@ -24,7 +25,7 @@ public class DoorController : MonoBehaviour
 
 	void OnTriggerStay()
 	{
-		if (!doorLock)
+		if (!doorLock && !securedLock)
 		{
 			anim.SetBool("character_nearby", true);
 		}

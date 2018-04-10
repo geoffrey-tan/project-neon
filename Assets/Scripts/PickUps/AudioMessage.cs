@@ -27,7 +27,6 @@ public class AudioMessage : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{
 			PlayAudioMessage(thisName);
-
 		}
 	}
 

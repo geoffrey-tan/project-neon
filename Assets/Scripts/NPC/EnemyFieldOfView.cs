@@ -16,12 +16,16 @@ public class EnemyFieldOfView : MonoBehaviour
 	public RaycastHit lastSeen;
 
 	private EnemyAI enemyAI;
+	private MindControl GetMindControl;
 
 	void Start()
 	{
 		StartCoroutine("FindTargetsWithDelay", .6f);
 
 		enemyAI = transform.GetComponent<EnemyAI>();
+		GetMindControl = transform.GetComponent<MindControl>();
+
+
 
 	}
 
@@ -39,6 +43,15 @@ public class EnemyFieldOfView : MonoBehaviour
 	{
 		visibleTargets.Clear();
 
+		if (GetMindControl.mindControl)
+		{
+			targetMask = LayerMask.GetMask("Enemy");
+		}
+		else
+		{
+			targetMask = LayerMask.GetMask("Player");
+		}
+
 		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
 		for (int i = 0; i < targetsInViewRadius.Length; i++)
@@ -54,7 +67,7 @@ public class EnemyFieldOfView : MonoBehaviour
 				{
 					visibleTargets.Add(target);
 
-					if (!enemyAI.searching) // Patrol -> Searching
+					if (!enemyAI.searching && !GetMindControl.mindControl) // Patrol -> Searching
 					{
 						Debug.Log("Searching");
 						enemyAI.Searching(target.transform.position); // Last seen position
@@ -81,6 +94,8 @@ public class EnemyFieldOfView : MonoBehaviour
 			}
 		}
 	}
+
+
 
 	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
 	{

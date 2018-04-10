@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4319824379196964}
   - component: {fileID: 65660518726756048}
   - component: {fileID: 114464487928287840}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -70,12 +70,6 @@ public class PlayerAbility : MonoBehaviour
 		WeaponDraw(true);
 	}
 
-	void Interact()
-	{
-
-
-	}
-
 	private IEnumerator AttackTimer(float time)
 	{
 		attackCD = true;
