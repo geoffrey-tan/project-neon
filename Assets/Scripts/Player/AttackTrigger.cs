@@ -9,7 +9,7 @@ public class AttackTrigger : MonoBehaviour
 		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null)
 		{
 			other.gameObject.GetComponent<MindControl>().mindControl = true;
-			StartCoroutine(other.gameObject.GetComponent<MindControl>().MindControlTimer(30f));
+			StartCoroutine(other.gameObject.GetComponent<MindControl>().MindControlTimer(10f));
 
 		}
 

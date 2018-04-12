@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PickUp
   - Button
+  - Distraction
   layers:
   - Default
   - TransparentFX
