@@ -14,9 +14,11 @@ public class PlayerAbility : MonoBehaviour
 	private float sheathTime = 5f;
 	private bool attackCD;
 	private bool weaponLethal;
+	private LineRenderer laserLine;
 
 	void Start()
 	{
+		laserLine = transform.Find("Aim").GetComponent<LineRenderer>();
 		anim = GetComponent<Animator>();
 
 		playerSword0 = transform.Find("Root/Ribs/PlayerSword (0)").GetComponent<Renderer>();
@@ -68,12 +70,6 @@ public class PlayerAbility : MonoBehaviour
 		anim.SetTrigger("MeleeLethal");
 
 		WeaponDraw(true);
-	}
-
-	void Interact()
-	{
-
-
 	}
 
 	private IEnumerator AttackTimer(float time)
