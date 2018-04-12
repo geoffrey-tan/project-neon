@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PickUp
   - Button
+  - PickUp
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - PostProcessing
   - Player
   - Cover
-  - 
+  - Enemy
   - 
   - 
   - 

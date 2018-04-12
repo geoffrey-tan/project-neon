@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
 	private Transform self;
 	private GameObject player;
 	private Transform patrolPos0, patrolPos1;
+	private MindControl GetMindControl;
 
 	// Components
 	private Animator anim;
@@ -22,8 +23,11 @@ public class EnemyAI : MonoBehaviour
 
 	private int arrived = 1;
 	private int moveCloser;
-	public float speed;
 	private float mindControlDuration = 30f;
+
+	public float patrolSpeed = 0.25f;
+	public float searchSpeed = 1f;
+	public float combatSpeed = 1.25f;
 
 	public bool searching;
 	public bool searchWait;
@@ -48,6 +52,8 @@ public class EnemyAI : MonoBehaviour
 		enemyGun0.enabled = true;
 		enemyGun1.enabled = false;
 
+		GetMindControl = transform.GetComponent<MindControl>();
+
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponent<Animator>();
 		audioEventController = GetComponent<AudioEventController>();
@@ -58,19 +64,18 @@ public class EnemyAI : MonoBehaviour
 
 	void Update()
 	{
-		if (combatStart)
+		if (!GetMindControl.mindControl)
 		{
-			Combat(); // Chase player    
+			if (combatStart)
+			{
+				Combat(); // Chase player    
+			}
+			else if (!searching)
+			{
+				Patrol(); // Patrol points
+			}
 		}
 
-		if (mindControl)
-		{
-			MindControl(); // Follow player
-		}
-		else if (!searching)
-		{
-			Patrol(); // Patrol points
-		}
 	}
 
 	void Patrol()
@@ -79,8 +84,8 @@ public class EnemyAI : MonoBehaviour
 
 		anim.SetInteger("Animation", 1);
 
-		speed = 0.25f;
-		agent.speed = speed;
+
+		agent.speed = patrolSpeed;
 
 		if (Vector3.Distance(self.position, patrolPos0.position) < 1f && arrived == 1)
 		{
@@ -106,8 +111,7 @@ public class EnemyAI : MonoBehaviour
 
 		searching = true; // Patrol -> Searching
 
-		speed = 1f;
-		agent.speed = speed;
+		agent.speed = searchSpeed;
 
 		if (Vector3.Distance(self.position, position) > 10f)
 		{
@@ -155,8 +159,7 @@ public class EnemyAI : MonoBehaviour
 			player.GetComponent<AudioSource>().Play();
 		}
 
-		speed = 1.25f;
-		agent.speed = speed;
+		agent.speed = combatSpeed;
 
 		// Follow
 		if (Vector3.Distance(self.position, player.transform.position) > 25f) // Too far -> Patrol
@@ -293,31 +296,31 @@ public class EnemyAI : MonoBehaviour
 
 	void MindControl()
 	{
-		WeaponDraw(true);
+		//WeaponDraw(true);
 
-		speed = 1f;
-		agent.speed = speed;
+		//speed = 1f;
+		//agent.speed = speed;
 
-		// Follow
-		if (Vector3.Distance(self.position, player.transform.position) > 2f) // Follow Player
-		{
-			anim.SetInteger("Animation", 1);
+		//// Follow
+		//if (Vector3.Distance(self.position, player.transform.position) > 2f) // Follow Player
+		//{
+		//	anim.SetInteger("Animation", 1);
 
-			agent.isStopped = false;
-			agent.destination = player.transform.position;
+		//	agent.isStopped = false;
+		//	agent.destination = player.transform.position;
 
-		}
-		else
-		{
-			anim.SetInteger("Animation", 0);
+		//}
+		//else
+		//{
+		//	anim.SetInteger("Animation", 0);
 
-			agent.isStopped = true;
-		}
+		//	agent.isStopped = true;
+		//}
 		// Attack
 		//StartCoroutine(MindControlTimer(mindControlDuration));
 	}
 
-	void BacktoPatrol()
+	public void BacktoPatrol()
 	{
 		if (player.GetComponent<AudioSource>().isPlaying)
 		{
