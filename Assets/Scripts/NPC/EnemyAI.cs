@@ -20,6 +20,9 @@ public class EnemyAI : MonoBehaviour
 	// Variables
 	private Coroutine coroutine;
 	private Coroutine patrolCoroutine;
+	private Coroutine coroutineDistracted;
+
+	public bool distracted;
 
 	private int arrived = 1;
 	private int moveCloser;
@@ -70,11 +73,46 @@ public class EnemyAI : MonoBehaviour
 			{
 				Combat(); // Chase player    
 			}
-			else if (!searching)
+			else if (!searching & !distracted)
 			{
+				Debug.Log("I am patrolling");
 				Patrol(); // Patrol points
 			}
+			else
+			{
+				Debug.Log("I am distracted");
+				Distracted();
+			}
 		}
+
+	}
+
+	void Distracted()
+	{
+
+
+		if (coroutineDistracted == null)
+		{
+			coroutineDistracted = StartCoroutine(DistractionTimer(10f));
+		}
+
+
+	}
+
+	IEnumerator DistractionTimer(float time)
+	{
+		AgentMovement(false);
+
+		yield return new WaitForSeconds(time);
+
+		Debug.Log("Timer done!");
+
+		distracted = false;
+
+		arrived = 1;
+		agent.destination = patrolPos0.position;
+
+		coroutineDistracted = null;
 
 	}
 
@@ -84,7 +122,7 @@ public class EnemyAI : MonoBehaviour
 
 		anim.SetInteger("Animation", 1);
 
-
+		agent.isStopped = false;
 		agent.speed = patrolSpeed;
 
 		if (Vector3.Distance(self.position, patrolPos0.position) < 1f && arrived == 1)
@@ -96,6 +134,20 @@ public class EnemyAI : MonoBehaviour
 		{
 			arrived = 1;
 			agent.destination = patrolPos0.position;
+		}
+
+	}
+
+	void AgentMovement(bool yes)
+	{
+		if (yes)
+		{
+			agent.isStopped = false;
+		}
+		else
+		{
+			anim.SetInteger("Animation", 3);
+			agent.isStopped = true;
 		}
 	}
 

@@ -16,6 +16,8 @@ public class PlayerAbility : MonoBehaviour
 	private bool weaponLethal;
 	private LineRenderer laserLine;
 
+	private GameObject distractTarget;
+
 	void Start()
 	{
 		laserLine = transform.Find("Aim").GetComponent<LineRenderer>();
@@ -35,6 +37,34 @@ public class PlayerAbility : MonoBehaviour
 
 			WeaponAttack();
 		}
+
+		if (Input.GetButtonDown("Distract")) // Distract
+		{
+
+			Distract();
+		}
+	}
+
+	void Distract()
+	{
+		if (distractTarget != null)
+		{
+			distractTarget.GetComponent<Distraction>().distract = true;
+
+		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Distraction"))
+		{
+			distractTarget = other.gameObject;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+
 	}
 
 	void WeaponDraw(bool draw)
