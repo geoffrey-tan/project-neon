@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class Distraction : MonoBehaviour
 {
-	public bool canDistract;
-	public bool distract;
-	public GameObject targets;
+	// Components      
+	public List<GameObject> targets; // https://stackoverflow.com/questions/249452/add-new-item-in-existing-array-in-c-net
 
+	// Scripts
 	private EnemyAI GetEnemyAI;
 
+	// Variables
+	public bool canDistract;
+	public bool distract;
 
-	private void Update()
+	void Start()
 	{
+		targets = new List<GameObject>();
+	}
 
-		if (distract && canDistract && targets != null && GetEnemyAI != null)
+	void Update()
+	{
+		if (distract && canDistract && targets != null)
 		{
 			Distracted();
 		}
-	}
-
-	void Distracted()
-	{
-
-		distract = false;
-		GetEnemyAI.distracted = true;
-		targets.transform.LookAt(transform.position);
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -37,17 +36,42 @@ public class Distraction : MonoBehaviour
 
 		if (other.gameObject.CompareTag("Enemy"))
 		{
-			GetEnemyAI = other.GetComponent<EnemyAI>();
-
-			targets = other.gameObject;
+			targets.Add(other.gameObject);
 		}
 	}
 
-	private void OnTriggerExit(Collider other)
+	void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
 			canDistract = false;
+		}
+
+		if (other.gameObject.CompareTag("Enemy"))
+		{
+			var objectOne = other.gameObject.GetInstanceID();
+
+			for (int i = 0; i < targets.Count; i++)
+			{
+				if (objectOne == targets[i].gameObject.GetInstanceID())
+				{
+					targets.RemoveAt(i); // https://stackoverflow.com/questions/10018957/c-sharp-how-to-remove-item-from-list
+				}
+			}
+		}
+	}
+
+	void Distracted()
+	{
+		distract = false;
+
+		for (int i = 0; i < targets.Count; i++)
+		{
+			// https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
+			Vector3 targetPosition = new Vector3(transform.position.x, targets[i].transform.position.y, transform.position.z);
+
+			targets[i].GetComponent<EnemyAI>().distracted = true;
+			targets[i].transform.LookAt(targetPosition);
 		}
 	}
 }

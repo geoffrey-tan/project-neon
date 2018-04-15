@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+	// Components
 	private Slider healthBar;
 	private Image healthBarColor;
 
+	// Variables
 	public float health;
 
 	void Start()
@@ -26,26 +28,20 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health -= 40f;
 			healthBar.value = health;
-			Debug.Log("HP: " + health + "/100");
 		}
 		else if (health <= 20)
 		{
-
 			var random = Random.Range(1, 4); // https://docs.unity3d.com/ScriptReference/Random.Range.html
 
 			if (random == 1 && health > 1)
 			{
-				Debug.Log("Survived!");
 				health = 1;
 				healthBar.value = health;
-
-				Debug.Log("HP: " + health + "/100");
 			}
 			else
 			{
 				PlayerDies();
 			}
-
 		}
 	}
 
@@ -53,6 +49,5 @@ public class PlayerHealth : MonoBehaviour
 	{
 		//transform.GetComponent<PlayerController>().enabled = false;
 		healthBarColor.color = Color.clear;
-		Debug.Log("You Died");
 	}
 }

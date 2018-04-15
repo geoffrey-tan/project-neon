@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class PlayerCameraController : MonoBehaviour
 {
+	// Constants
 	private const float Y_ANGLE_MIN = -50f;
 	private const float Y_ANGLE_MAX = 50f;
 
-	public Transform lookAt;
+	// Components
+	public Transform lookAt; // Target for camera
 	private Transform self;
-	private Camera cam;
 
+	// Variables
 	private float distance = 4f;
 	private float currentX;
 	private float currentY = -25f;
 	private float sensitivityX = 2f;
 	private float sensitivityY = 1f;
 
-	private Vector3 offset;
-
 	void Start()
 	{
 		self = transform;
-		cam = Camera.main;
 	}
 
 	void Update()

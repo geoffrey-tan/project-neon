@@ -156,8 +156,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4005998474432024}
   - component: {fileID: 95277996589546162}
-  - component: {fileID: 114503501039793146}
   - component: {fileID: 65282560986727118}
+  - component: {fileID: 114881137629819126}
   m_Layer: 0
   m_Name: AudioMessage (0)
   m_TagString: PickUp
@@ -1167,7 +1167,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114503501039793146
+--- !u!114 &114881137629819126
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1175,9 +1175,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1557030891733898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c972e51b9954ae2945398120ea90b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 279aa2a9b4fc54c18ace0720bb7ce657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message0: {fileID: 8300000, guid: d4440575b1a134e35af09ad7b6b37589, type: 3}
-  message1: {fileID: 0}
-  message2: {fileID: 0}

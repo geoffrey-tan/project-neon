@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class EnemyFieldOfView : MonoBehaviour
 {
+	// Components
+	public List<Transform> visibleTargets = new List<Transform>();
+	public Transform currentTarget;
+
+	// Scripts
+	private EnemyAI GetEnemyAI;
+	private MindControl GetMindControl;
+
+	// Variables
+	public RaycastHit lastSeen;
+	public LayerMask targetMask;
+	public LayerMask obstacleMask;
 	public float viewRadius; // https://www.youtube.com/watch?v=rQG9aUWarwE
 	[Range(0, 360)]
 	public float viewAngle;
-
-	public LayerMask targetMask;
-	public LayerMask obstacleMask;
-
-	public List<Transform> visibleTargets = new List<Transform>();
-
-	public RaycastHit lastSeen;
-
-	private EnemyAI enemyAI;
-	private MindControl GetMindControl;
 
 	void Start()
 	{
 		StartCoroutine("FindTargetsWithDelay", .6f);
 
-		enemyAI = transform.GetComponent<EnemyAI>();
+		GetEnemyAI = transform.GetComponent<EnemyAI>();
 		GetMindControl = transform.GetComponent<MindControl>();
-
-
-
 	}
 
 	IEnumerator FindTargetsWithDelay(float delay)
@@ -36,6 +35,14 @@ public class EnemyFieldOfView : MonoBehaviour
 			yield return new WaitForSeconds(delay);
 
 			FindVisibleTargets();
+		}
+	}
+
+	void Update()
+	{
+		if (GetMindControl.mindControl && Input.GetButton("Distract"))
+		{
+			Distraction(); // Shoot at enemy
 		}
 	}
 
@@ -67,35 +74,49 @@ public class EnemyFieldOfView : MonoBehaviour
 				{
 					visibleTargets.Add(target);
 
-					if (!enemyAI.searching && !GetMindControl.mindControl) // Patrol -> Searching
+					if (GetMindControl.mindControl)
 					{
-						Debug.Log("Searching");
-						enemyAI.Searching(target.transform.position); // Last seen position
-
-					}
-					else if (enemyAI.searchWait && !enemyAI.combatStart) // 2f Wait -> Combat
-					{
-						enemyAI.combatStart = true;
+						currentTarget = visibleTargets[0]; // Nearby guard
 					}
 
-					if (enemyAI.combatStart)
+					if (!GetEnemyAI.searching && !GetMindControl.mindControl) // Patrol -> Searching
 					{
-						if (!enemyAI.shot && enemyAI.canShoot)
+						GetEnemyAI.Searching(target.transform.position); // Last seen position
+
+					}
+					else if (GetEnemyAI.searchWait && !GetEnemyAI.combatStart) // 2f Wait -> Combat
+					{
+						GetEnemyAI.combatStart = true;
+					}
+
+					if (GetEnemyAI.combatStart)
+					{
+						if (!GetEnemyAI.shot && GetEnemyAI.canShoot)
 						{
-							Debug.Log("Shoot called");
-							enemyAI.shot = true;
-
-							enemyAI.Shoot();
+							GetEnemyAI.Shoot();
 						}
-
 					}
-
 				}
 			}
 		}
 	}
 
+	void Distraction()
+	{
+		if (currentTarget != null)
+		{
+			currentTarget.transform.GetComponent<EnemyAI>().distracted = true;
+			currentTarget.transform.GetComponent<EnemyAI>().Distracted(gameObject);
 
+			transform.LookAt(currentTarget.position);
+			GetEnemyAI.WeaponDraw(true);
+
+			if (!GetEnemyAI.shot)
+			{
+				StartCoroutine(GetEnemyAI.ShootTimer(2f));
+			}
+		}
+	}
 
 	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
 	{

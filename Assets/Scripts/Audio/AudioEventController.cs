@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class AudioEventController : MonoBehaviour
 {
-	// gameObjects
+	// Components
 	private GameObject player;
+	private AudioSource audioSource;
 
-	// Unity Objects
+	// Assets
 	public AudioClip footSteps;
 	public AudioClip alert0;
 	public AudioClip gun0;
-
-	// Component
-	private AudioSource audioSource;
 
 	void Start()
 	{
@@ -23,13 +21,15 @@ public class AudioEventController : MonoBehaviour
 
 	public void PlaySFXEvent(int number) // https://docs.unity3d.com/540/Documentation/Manual/animeditor-AnimationEvents.html
 	{
-		if (number == 1)
+		switch (number)
 		{
-			audioSource.PlayOneShot(footSteps);
+			case 1:
+				audioSource.PlayOneShot(footSteps);
+				break;
 		}
 	}
 
-	public void PlaySFX(string audio)
+	public void PlaySFX(string audio) // Public function
 	{
 		switch (audio)
 		{

@@ -6,109 +6,120 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class MindControl : MonoBehaviour
 {
-	public bool mindControl;
-
-	private EnemyAI GetEnemyAI;
-
+	// Components
 	private GameObject player;
-	private ThirdPersonCharacter GetCharacter;
-	private ThirdPersonUserControl GetThirdPersonUserControl;
-	private PlayerCameraController cameraController;
 	private Transform cameraPos;
 	private Collider attackTrigger;
+	private NavMeshAgent navMeshAgent;
+	private Animator anim;
 
+	// Scripts
+	private EnemyAI GetEnemyAI;
+	private ThirdPersonCharacter GetCharacter;
+	private ThirdPersonUserControl GetThirdPersonUserControl;
+	private PlayerCameraController GetPlayerCameraController;
+
+	// Assets
 	public RuntimeAnimatorController animatorController;
 	public RuntimeAnimatorController animatorControllerMindControl;
 
-	private Animator anim;
-
-	private bool interactCD;
+	// Variables
+	public bool mindControl;
+	private bool abilityCD;
 
 	void Start()
 	{
-		transform.GetComponent<Animator>().runtimeAnimatorController = animatorController;
-
 		player = GameObject.Find("Player");
-
-		GetCharacter = gameObject.transform.GetComponent<ThirdPersonCharacter>();
-		GetThirdPersonUserControl = gameObject.transform.GetComponent<ThirdPersonUserControl>();
-
-		cameraController = Camera.main.GetComponent<PlayerCameraController>();
-
 		cameraPos = transform.Find("CameraPosMindControl");
+		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
+		navMeshAgent = transform.GetComponent<NavMeshAgent>();
 		anim = transform.GetComponent<Animator>();
 
-		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
+		anim.runtimeAnimatorController = animatorController;
+
+		GetEnemyAI = transform.GetComponent<EnemyAI>();
+		GetCharacter = transform.GetComponent<ThirdPersonCharacter>();
+		GetThirdPersonUserControl = transform.GetComponent<ThirdPersonUserControl>();
+		GetPlayerCameraController = Camera.main.GetComponent<PlayerCameraController>();
 	}
 
 	void Update()
 	{
 		if (mindControl)
 		{
-			transform.GetComponent<Animator>().runtimeAnimatorController = animatorControllerMindControl;
-			cameraController.lookAt = cameraPos;
+			Mindcontrol(true);
 
-			//transform.GetComponent<Rigidbody>().detectCollisions = true;
-
-			player.GetComponent<ThirdPersonCharacter>().enabled = false;
-			player.GetComponent<ThirdPersonUserControl>().enabled = false;
-			transform.GetComponent<NavMeshAgent>().enabled = false;
-			GetCharacter.enabled = true;
-			GetThirdPersonUserControl.enabled = true;
-			//transform.GetComponent<Rigidbody>().detectCollisions = true;
-
-			Interact();
-
+			if (Input.GetButtonDown("Interact") && !abilityCD) // Interact
+			{
+				Interact();
+			}
 		}
-
-
 	}
 
 	void Interact()
 	{
-		if (Input.GetButtonDown("Interact") && !interactCD) // Interact
+		anim.SetTrigger("Interact");
+
+		StartCoroutine(InteractTimer(0.2f));
+		StartCoroutine(AbilityCooldown(1f));
+	}
+
+	void Mindcontrol(bool yes)
+	{
+		if (yes)
 		{
+			anim.runtimeAnimatorController = animatorControllerMindControl; // Change animations
+			GetPlayerCameraController.lookAt = cameraPos; // Change camera position
 
-			StartCoroutine(InteractTimer(1f));
+			player.GetComponent<ThirdPersonCharacter>().enabled = false;
+			player.GetComponent<ThirdPersonUserControl>().enabled = false;
 
-			anim.SetTrigger("MeleeLethal");
+			navMeshAgent.enabled = false;
+			GetCharacter.enabled = true;
+			GetThirdPersonUserControl.enabled = true;
+		}
+		else if (!yes)
+		{
+			mindControl = false;
 
+			anim.runtimeAnimatorController = animatorController;
+			GetPlayerCameraController.lookAt = player.transform.Find("CameraPos");
+
+			player.GetComponent<ThirdPersonCharacter>().enabled = true;
+			player.GetComponent<ThirdPersonUserControl>().enabled = true;
+
+			navMeshAgent.enabled = true;
+			GetCharacter.enabled = false;
+			GetThirdPersonUserControl.enabled = false;
+
+			GetEnemyAI.BacktoPatrol();
 		}
 	}
 
-	private IEnumerator InteractTimer(float time)
+	IEnumerator InteractTimer(float time)
 	{
-		interactCD = true;
 		attackTrigger.enabled = true;
-
-		yield return new WaitForSeconds(0.2f);
-
-		attackTrigger.enabled = false;
 
 		yield return new WaitForSeconds(time);
 
-		interactCD = false;
+		attackTrigger.enabled = false;
 	}
 
-	public IEnumerator MindControlTimer(float time)
+	IEnumerator AbilityCooldown(float time)
+	{
+		abilityCD = true;
+
+		yield return new WaitForSeconds(time);
+
+		abilityCD = false;
+	}
+
+	public IEnumerator MindControlTimer(float time) // Time Controlled by attackTrigger
 	{
 		yield return new WaitForSeconds(time);
 
 		mindControl = false;
 
-		transform.GetComponent<Animator>().runtimeAnimatorController = animatorController;
-
-		cameraController.lookAt = player.transform.Find("CameraPos");
-
-		player.GetComponent<ThirdPersonCharacter>().enabled = true;
-		player.GetComponent<ThirdPersonUserControl>().enabled = true;
-		transform.GetComponent<NavMeshAgent>().enabled = true;
-		GetCharacter.enabled = false;
-		GetThirdPersonUserControl.enabled = false;
-
-		transform.GetComponent<EnemyAI>().BacktoPatrol();
-
+		Mindcontrol(false);
 	}
-
-
 }

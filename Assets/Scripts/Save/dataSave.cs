@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class dataSave : MonoBehaviour
 {
-
 	public int Audio;
-
-
 }

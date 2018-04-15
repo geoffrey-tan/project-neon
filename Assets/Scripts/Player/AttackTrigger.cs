@@ -9,35 +9,31 @@ public class AttackTrigger : MonoBehaviour
 		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null)
 		{
 			other.gameObject.GetComponent<MindControl>().mindControl = true;
-			StartCoroutine(other.gameObject.GetComponent<MindControl>().MindControlTimer(10f));
-
+			StartCoroutine(other.gameObject.GetComponent<MindControl>().MindControlTimer(10f)); // Duration
 		}
 
 		if (other.gameObject.CompareTag("Button"))
 		{
 			if (!other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().securedLock)
 			{
-
 				OpenDoor(other);
-
 			}
 			else
 			{
 				if (transform.parent.GetComponent<MindControl>() != null)
 				{
 					other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().securedLock = false;
+
 					OpenDoor(other);
 				}
-
 			}
-
-
 		}
 	}
 
 	void OpenDoor(Collider other)
 	{
 		other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().doorLock = false;
+
 		Collider[] colliders = other.gameObject.transform.parent.Find("door_2").GetComponentsInChildren<Collider>();
 
 		for (int i = 0; i < colliders.Length; i++)
@@ -48,4 +44,3 @@ public class AttackTrigger : MonoBehaviour
 		other.gameObject.transform.parent.Find("door_2").GetComponent<Collider>().enabled = true;
 	}
 }
-
