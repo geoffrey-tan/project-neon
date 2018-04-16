@@ -82,29 +82,39 @@ public class EnemyAI : MonoBehaviour
 
 		int patrolPointsMax = transform.parent.Find("PatrolPoints").transform.childCount;
 
-		if (currentPatrol == patrolPointsMax)
+		if (patrolPointsMax > 1)
 		{
-			currentPatrol = 0;
+			if (currentPatrol == patrolPointsMax)
+			{
+				currentPatrol = 0;
+			}
+
+			agent.destination = patrolPoints[currentPatrol + 1].position; // +1 First Transform is parent
+
+			if (Vector3.Distance(self.position, patrolPoints[currentPatrol + 1].position) < 1f)
+			{
+				currentPatrol++;
+			}
 		}
-
-		agent.destination = patrolPoints[currentPatrol + 1].position; // +1 First Transform is parent
-
-		if (Vector3.Distance(self.position, patrolPoints[currentPatrol + 1].position) < 1f)
+		else
 		{
-			currentPatrol++;
+			if (Vector3.Distance(self.position, patrolPoints[currentPatrol + 1].position) > 1f)
+			{
+				currentPatrol++;
+			}
 		}
 	}
 
-	public void Searching(Vector3 position)
+	public void Searching(Vector3 lastSeen) // Called from EnemyFieldOfView script
 	{
 		searching = true; // Patrol -> Searching      
 		audioEventController.PlaySFX("alert0");
 
 		WeaponDraw(true);
 		AgentMovement("searching");
-		AgentDestination(position);
+		AgentDestination(lastSeen);
 
-		if (Vector3.Distance(self.position, position) > 10f)
+		if (Vector3.Distance(self.position, lastSeen) > 10f)
 		{
 			StartCoroutine(SearchWait(0.5f)); // Wait 2f before -> Combat         
 		}
