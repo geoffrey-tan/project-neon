@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 54070005092677690}
   - component: {fileID: 136915915902694446}
   - component: {fileID: 82292328458770994}
-  - component: {fileID: 205374814664178084}
   - component: {fileID: 114050418798241998}
   - component: {fileID: 114465889368468896}
   - component: {fileID: 114500990908750286}
@@ -859,7 +858,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276234883654646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.5, y: 0, z: 38}
+  m_LocalPosition: {x: -34.8, y: 0, z: 20.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4093521730937360}
@@ -886,7 +885,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1381993706068520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.8, y: 0, z: -38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4177304811214392}
@@ -956,7 +955,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297028270961562}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5, y: 0, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -966,7 +965,7 @@ Transform:
   - {fileID: 4833312684579828}
   m_Father: {fileID: 4093521730937360}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4181968566849154
 Transform:
   m_ObjectHideFlags: 1
@@ -1228,7 +1227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183947892327690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25, y: 0, z: -6}
+  m_LocalPosition: {x: -3.8, y: 0, z: 20.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4093521730937360}
@@ -1933,20 +1932,3 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!205 &205374814664178084
-LODGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297028270961562}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.0014930367, y: 0.8790762, z: -0.0770877}
-  m_Size: 1.9559842
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LODs:
-  - screenRelativeHeight: 0.016554158
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 137593179715148840}
-  m_Enabled: 1

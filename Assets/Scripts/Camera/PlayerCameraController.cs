@@ -11,7 +11,7 @@ public class PlayerCameraController : MonoBehaviour
 	private Transform self;
 	private Camera cam;
 
-	private float distance = 4f;
+	private float distance = 2f;
 	private float currentX;
 	private float currentY = -25f;
 	private float sensitivityX = 2f;
