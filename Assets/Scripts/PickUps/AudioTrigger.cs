@@ -6,21 +6,28 @@ public class AudioTrigger : MonoBehaviour
 {
 	// Components
 	private GameObject self;
-	private AudioSource camAudio;
-	private AudioClip thisAudioClip;
+	private AudioSource messageAudio;
+	private AudioSource dialogAudio;
 
 	//Scripts
 	private AudioMessage GetAudioMessage;
+	private Dialogs GetDialogs;
 
 	// Variables
+	private AudioClip thisAudioClip;
+	public string dialogID;
 	private string thisName;
+	private float thisLength;
 	private float timeLeft;
 
 	void Start()
 	{
 		self = gameObject;
-		camAudio = Camera.main.gameObject.transform.Find("Audio").GetComponent<AudioSource>();
-		GetAudioMessage = Camera.main.gameObject.transform.Find("Audio").GetComponent<AudioMessage>();
+		messageAudio = Camera.main.gameObject.transform.Find("Audio/AudioMessage").GetComponent<AudioSource>();
+		dialogAudio = Camera.main.gameObject.transform.Find("Audio/Dialogs").GetComponent<AudioSource>();
+
+		GetAudioMessage = Camera.main.gameObject.transform.Find("Audio/AudioMessage").GetComponent<AudioMessage>();
+		GetDialogs = Camera.main.gameObject.transform.Find("Audio/Dialogs").GetComponent<Dialogs>();
 
 		thisName = transform.name;
 	}
@@ -29,50 +36,68 @@ public class AudioTrigger : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			PlayAudioMessage(thisName);
+			if (self.gameObject.CompareTag("PickUp"))
+			{
+				PlayAudioMessage(thisName);
+			}
+			else if (self.gameObject.CompareTag("Dialog"))
+			{
+				if (dialogID != "")
+				{
+					messageAudio.Stop();
+					GetDialogs.PlayDialog(dialogID);
+					transform.gameObject.SetActive(false);
+				}
+				else
+				{
+					Debug.Log("Missing Dialog ID for: " + thisName); // Debug if ID is missing
+				}
+			}
 		}
 	}
 
 	void PlayAudioMessage(string number)
 	{
-		switch (number)
-		{
-			case "AudioMessage (0)":
-				thisAudioClip = GetAudioMessage.message0;
-				break;
-			case "AudioMessage (1)":
-				thisAudioClip = GetAudioMessage.message1;
-				break;
-		}
+		thisAudioClip = GetAudioMessage.ReturnMessage(number);
 
-		if (!camAudio.isPlaying)
+		if (!messageAudio.isPlaying && !dialogAudio.isPlaying)
 		{
-			camAudio.clip = thisAudioClip;
-			camAudio.Play();
+			messageAudio.clip = thisAudioClip;
+			messageAudio.Play();
 
 			transform.gameObject.SetActive(false);
 		}
+		else if (dialogAudio.isPlaying)
+		{
+			DelayedPlay(dialogAudio);
+		}
 		else
 		{
-			Renderer[] renders = self.transform.GetComponentsInChildren<Renderer>();
+			DelayedPlay(messageAudio);
+		}
+	}
 
-			for (int i = 0; i < renders.Length; i++)
-			{
-				renders[i].enabled = false;
-			}
+	void DelayedPlay(AudioSource audioSource)
+	{
+		Renderer[] renders = self.transform.GetComponentsInChildren<Renderer>();
 
-			timeLeft = thisAudioClip.length - camAudio.time;
-			StartCoroutine(AudioPlayList(timeLeft));
+		for (int i = 0; i < renders.Length; i++)
+		{
+			renders[i].enabled = false;
 		}
 
+		thisLength = audioSource.clip.length;
+		timeLeft = thisLength - audioSource.time;
+
+		StartCoroutine(AudioPlayList(timeLeft));
 	}
 
 	IEnumerator AudioPlayList(float timer)
 	{
 		yield return new WaitForSeconds(timer + 1f);
 
-		camAudio.clip = thisAudioClip;
-		camAudio.Play();
+		messageAudio.clip = thisAudioClip;
+		messageAudio.Play();
 		transform.gameObject.SetActive(false);
 	}
 }

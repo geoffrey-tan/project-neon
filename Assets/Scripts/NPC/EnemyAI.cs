@@ -100,7 +100,12 @@ public class EnemyAI : MonoBehaviour
 		{
 			if (Vector3.Distance(self.position, patrolPoints[currentPatrol + 1].position) > 1f)
 			{
-				currentPatrol++;
+				agent.destination = patrolPoints[currentPatrol + 1].position;
+			}
+			else if (Vector3.Distance(self.position, patrolPoints[currentPatrol + 1].position) <= 1f)
+			{
+				WeaponDraw(true);
+				AgentMovement("aim");
 			}
 		}
 	}
