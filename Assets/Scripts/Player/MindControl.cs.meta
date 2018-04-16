@@ -3,7 +3,11 @@ guid: 6004616e09def4c90b3400b0dc4af4a7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animatorController: {fileID: 9100000, guid: 6fe033bcf68654c549e3d20d366e3271,
+      type: 2}
+  - animatorControllerMindControl: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

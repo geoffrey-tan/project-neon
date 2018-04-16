@@ -5,371 +5,291 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-	// gameObjects
+	// Components
 	private Transform self;
 	private GameObject player;
-	private Transform patrolPos0, patrolPos1;
-	private MindControl GetMindControl;
-
-	// Components
-	private Animator anim;
 	private NavMeshAgent agent;
-	private AudioEventController audioEventController;
+	private Animator anim;
 	private Renderer enemyGun0, enemyGun1;
+
+	// Scripts
+	private MindControl GetMindControl;
+	private AudioEventController audioEventController;
 
 	// Variables
 	private Coroutine coroutine;
 	private Coroutine patrolCoroutine;
 	private Coroutine coroutineDistracted;
 
+	//public bool mindControl;
 	public bool distracted;
-
-	private int arrived = 1;
-	private int moveCloser;
-	private float mindControlDuration = 30f;
 
 	public float patrolSpeed = 0.25f;
 	public float searchSpeed = 1f;
 	public float combatSpeed = 1.25f;
+	private float distanceTarget = 10f;
 
 	public bool searching;
 	public bool searchWait;
 	public bool combatStart;
-	public bool shot;
 	public bool canShoot;
-	public bool mindControl;
+	public bool shot;
+
+	private int currentPatrol = 0;
 
 	void Start()
 	{
 		self = transform;
 		player = GameObject.Find("Player");
+		agent = GetComponent<NavMeshAgent>();
+		anim = GetComponent<Animator>();
 
-		patrolPos0 = transform.parent.Find("PatrolPos (0)").transform; // https://answers.unity.com/questions/763732/getcomponentinparent-how-does-it-work.html
-		patrolPos1 = transform.parent.Find("PatrolPos (1)").transform;
+		GetMindControl = transform.GetComponent<MindControl>();
+		audioEventController = GetComponent<AudioEventController>();
 
-		//enemyGun0 = transform.Find("EnemyGun (0)").GetComponent<Renderer>();
-		//enemyGun1 = transform.Find("EnemyGun (1)").GetComponent<Renderer>();
 		enemyGun0 = transform.Find("Armature/Hips/Spine/Chest/EnemyGun (0)").GetComponent<Renderer>();
 		enemyGun1 = transform.Find("Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.r/LowerArm.R/Hand.R/EnemyGun (1)").GetComponent<Renderer>();
 
-		enemyGun0.enabled = true;
-		enemyGun1.enabled = false;
-
-		GetMindControl = transform.GetComponent<MindControl>();
-
-		agent = GetComponent<NavMeshAgent>();
-		anim = GetComponent<Animator>();
-		audioEventController = GetComponent<AudioEventController>();
-
-		agent.destination = patrolPos0.position; // https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent-destination.html
-		anim.SetInteger("Animation", 1);
+		WeaponDraw(false);
+		AgentMovement("patrol"); // https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent-destination.html      
 	}
 
 	void Update()
 	{
-		if (!GetMindControl.mindControl)
+		if (!GetMindControl.mindControl) // Not mindcontrolled
 		{
 			if (combatStart)
 			{
-				Combat(); // Chase player    
+				Combat();
 			}
-			else if (!searching & !distracted)
+			else if (distracted)
 			{
-				Debug.Log("I am patrolling");
-				Patrol(); // Patrol points
+				Distracted(null); // Distracted by object
 			}
-			else
+			else if (!searching)
 			{
-				Debug.Log("I am distracted");
-				Distracted();
+				Patrol();
 			}
 		}
-
-	}
-
-	void Distracted()
-	{
-
-
-		if (coroutineDistracted == null)
-		{
-			coroutineDistracted = StartCoroutine(DistractionTimer(10f));
-		}
-
-
-	}
-
-	IEnumerator DistractionTimer(float time)
-	{
-		AgentMovement(false);
-
-		yield return new WaitForSeconds(time);
-
-		Debug.Log("Timer done!");
-
-		distracted = false;
-
-		arrived = 1;
-		agent.destination = patrolPos0.position;
-
-		coroutineDistracted = null;
-
 	}
 
 	void Patrol()
 	{
 		WeaponDraw(false);
+		AgentMovement("patrol");
 
-		anim.SetInteger("Animation", 1);
+		Transform[] patrolPoints = transform.parent.Find("PatrolPoints").GetComponentsInChildren<Transform>(); // https://answers.unity.com/questions/763732/getcomponentinparent-how-does-it-work.html
 
-		agent.isStopped = false;
-		agent.speed = patrolSpeed;
+		int patrolPointsMax = transform.parent.Find("PatrolPoints").transform.childCount;
 
-		if (Vector3.Distance(self.position, patrolPos0.position) < 1f && arrived == 1)
+		if (currentPatrol == patrolPointsMax)
 		{
-			arrived = 0;
-			agent.destination = patrolPos1.position;
-		}
-		else if (Vector3.Distance(self.position, patrolPos1.position) < 1f && arrived == 0)
-		{
-			arrived = 1;
-			agent.destination = patrolPos0.position;
+			currentPatrol = 0;
 		}
 
-	}
+		agent.destination = patrolPoints[currentPatrol + 1].position; // +1 First Transform is parent
 
-	void AgentMovement(bool yes)
-	{
-		if (yes)
+		if (Vector3.Distance(self.position, patrolPoints[currentPatrol + 1].position) < 1f)
 		{
-			agent.isStopped = false;
-		}
-		else
-		{
-			anim.SetInteger("Animation", 3);
-			agent.isStopped = true;
+			currentPatrol++;
 		}
 	}
 
 	public void Searching(Vector3 position)
 	{
-		WeaponDraw(true);
-
-		anim.SetInteger("Animation", 4);
-
-		Debug.Log("I see you!");
-
+		searching = true; // Patrol -> Searching      
 		audioEventController.PlaySFX("alert0");
 
-		searching = true; // Patrol -> Searching
-
-		agent.speed = searchSpeed;
+		WeaponDraw(true);
+		AgentMovement("searching");
+		AgentDestination(position);
 
 		if (Vector3.Distance(self.position, position) > 10f)
 		{
-			Debug.Log("Not sure");
-			StartCoroutine(SearchWait(0.5f)); // Wait 2f before -> Combat
+			StartCoroutine(SearchWait(0.5f)); // Wait 2f before -> Combat         
 		}
 		else
 		{
-			Debug.Log("Pretty sure");
 			searchWait = true; // Searching -> Combat
 		}
 
 		patrolCoroutine = StartCoroutine(PatrolTimer(20f));
-
-		// Follow
-		if (Vector3.Distance(self.position, player.transform.position) > 25f) // Too far -> Patrol
-		{
-			BacktoPatrol();
-		}
-		else if (Vector3.Distance(self.position, position) > 2f) // Move to Last Seen
-		{
-			agent.isStopped = false;
-			agent.destination = position;
-		}
-		else // Stop, wait
-		{
-			anim.SetInteger("Animation", 3);
-
-			agent.isStopped = true;
-		}
 	}
 
 	public void Combat()
 	{
 		WeaponDraw(true);
-
-		anim.SetInteger("Animation", 2);
-
-		StopCoroutine(patrolCoroutine);
-
-		Debug.Log("Combat Started!");
+		AgentMovement("combat");
+		AgentDestination(player.transform.position);
 
 		if (!player.GetComponent<AudioSource>().isPlaying)
 		{
 			player.GetComponent<AudioSource>().Play();
 		}
 
-		agent.speed = combatSpeed;
+		StopCoroutine(patrolCoroutine);
+	}
 
-		// Follow
+	public void Shoot()
+	{
+		transform.LookAt(player.transform);
+
+		var damageOverlay = GameObject.Find("ScreenFlash").transform.Find("Damage").gameObject;
+
+		if (Vector3.Distance(self.position, player.transform.position) < 15f)
+		{
+			shot = true;
+
+			transform.LookAt(player.transform);
+
+			audioEventController.PlaySFX("gun0");
+			player.GetComponent<Animator>().SetTrigger("Hit");
+
+			player.GetComponent<PlayerHealth>().PlayerDamage();
+
+			damageOverlay.SetActive(false);
+			damageOverlay.SetActive(true);
+
+			StartCoroutine(ShootTimer(2f));
+		}
+	}
+
+	public IEnumerator ShootTimer(float time)
+	{
+		anim.SetTrigger("RangedGun");
+
+		yield return new WaitForSeconds(time);
+
+		shot = false;
+	}
+
+	public void Distracted(GameObject target)
+	{
+		AgentMovement("aim");
+		WeaponDraw(true);
+
+		if (target != null)
+		{
+			transform.LookAt(target.transform.position); // Mind-Control distract         
+		}
+
+		if (coroutineDistracted == null)
+		{
+			coroutineDistracted = StartCoroutine(DistractionTimer(10f));
+		}
+	}
+
+	IEnumerator DistractionTimer(float time)
+	{
+		yield return new WaitForSeconds(time);
+
+		distracted = false;
+
+		BacktoPatrol();
+
+		coroutineDistracted = null;
+	}
+
+	void AgentDestination(Vector3 target)
+	{
 		if (Vector3.Distance(self.position, player.transform.position) > 25f) // Too far -> Patrol
 		{
 			BacktoPatrol();
 		}
-
-		if (moveCloser == 1)
+		else if (!combatStart)
 		{
-			Debug.Log("Moving closer!");
-
-			if (Vector3.Distance(self.position, player.transform.position) > 5f) // Move to Player
+			if (Vector3.Distance(self.position, target) > 2f) // Move to Last Seen
 			{
-
-				agent.isStopped = false;
-				agent.destination = player.transform.position;
+				agent.destination = target;
 			}
 			else // Stop, wait
 			{
-				anim.SetInteger("Animation", 3);
-
+				AgentMovement("aim");
 				transform.LookAt(player.transform);
-
-				if (coroutine == null) // https://answers.unity.com/questions/1029332/restart-a-coroutine.html
-				{
-					coroutine = StartCoroutine(MoveTimer(10f));
-
-				}
-
-
-				agent.isStopped = true;
-			}
-		}
-		else if (moveCloser == 2)
-		{
-			Debug.Log("Moving even closer!");
-
-			if (Vector3.Distance(self.position, player.transform.position) > 2f) // Move to Player
-			{
-
-
-				agent.isStopped = false;
-				agent.destination = player.transform.position;
-			}
-			else // Stop, wait
-			{
-				transform.LookAt(player.transform);
-
-				anim.SetInteger("Animation", 3);
-
-				agent.isStopped = true;
 			}
 		}
 		else
 		{
-			if (Vector3.Distance(self.position, player.transform.position) > 10f) // Move to Player
+			if (Vector3.Distance(self.position, target) > distanceTarget) // Move to Player
 			{
-
-
-				agent.isStopped = false;
-				agent.destination = player.transform.position;
+				agent.destination = target;
 			}
 			else // Stop, wait
 			{
+				AgentMovement("aim");
 				transform.LookAt(player.transform);
 
-				if (coroutine == null) // https://answers.unity.com/questions/1029332/restart-a-coroutine.html
+				if (coroutine == null) // Restart coroutine https://answers.unity.com/questions/1029332/restart-a-coroutine.html
 				{
-					coroutine = StartCoroutine(MoveTimer(5f));
+					if ((int)distanceTarget == 10) // Float -> Int https://social.msdn.microsoft.com/Forums/vstudio/en-US/c633db6d-fc3c-4c83-be8d-90f9640bbbf4/how-can-i-convert-float-to-int?forum=csharpgeneral
+					{
+						coroutine = StartCoroutine(MoveTimer(5f));
+					}
+					else if ((int)distanceTarget == 5)
+					{
+						coroutine = StartCoroutine(MoveTimer(10f));
+					}
 				}
-				anim.SetInteger("Animation", 3);
 
-				agent.isStopped = true;
 			}
 		}
 	}
 
 	public IEnumerator MoveTimer(float time)
 	{
-		//timer
-		Debug.Log("Timer Started! " + time);
-
 		yield return new WaitForSeconds(2f);
 
 		if (!canShoot)
 		{
-			Debug.Log("I can shoot now!");
 			canShoot = true;
 		}
 
-
 		yield return new WaitForSeconds(time);
 
-		if (moveCloser == 0)
+		if ((int)distanceTarget == 10)
 		{
-			moveCloser = 1;
+			distanceTarget = 5f;
 		}
-		else
+		else if ((int)distanceTarget == 5)
 		{
-			moveCloser = 2;
+			distanceTarget = 2f;
 		}
 
 		coroutine = null;
 	}
 
-	public void Shoot()
+	public void AgentMovement(string movement)
 	{
-		if (Vector3.Distance(self.position, player.transform.position) < 15f)
+		switch (movement)
 		{
-			transform.LookAt(player.transform);
-
-			anim.SetTrigger("RangedGun");
-			player.GetComponent<Animator>().SetTrigger("Hit");
-
-			StartCoroutine(ShootTimer(2f));
-
-			audioEventController.PlaySFX("gun0");
-
-			GameObject.Find("ScreenFlash").transform.Find("Damage").gameObject.SetActive(false);
-			GameObject.Find("ScreenFlash").transform.Find("Damage").gameObject.SetActive(true);
-
-			player.GetComponent<PlayerHealth>().PlayerDamage();
+			case "patrol":
+				anim.SetInteger("Animation", 1);
+				agent.isStopped = false;
+				agent.speed = patrolSpeed;
+				break;
+			case "searching":
+				anim.SetInteger("Animation", 4);
+				agent.isStopped = false;
+				agent.speed = searchSpeed;
+				break;
+			case "combat":
+				anim.SetInteger("Animation", 2);
+				agent.isStopped = false;
+				agent.speed = combatSpeed;
+				break;
+			case "aim":
+				anim.SetInteger("Animation", 3);
+				agent.isStopped = true;
+				break;
+			case "stop":
+				anim.SetInteger("Animation", 0);
+				agent.isStopped = true;
+				break;
+			default:
+				anim.SetInteger("Animation", 0);
+				agent.isStopped = true;
+				break;
 		}
-	}
-
-	IEnumerator ShootTimer(float time)
-	{
-		yield return new WaitForSeconds(time);
-
-		Debug.Log("I can shoot again");
-
-		shot = false;
-	}
-
-	void MindControl()
-	{
-		//WeaponDraw(true);
-
-		//speed = 1f;
-		//agent.speed = speed;
-
-		//// Follow
-		//if (Vector3.Distance(self.position, player.transform.position) > 2f) // Follow Player
-		//{
-		//	anim.SetInteger("Animation", 1);
-
-		//	agent.isStopped = false;
-		//	agent.destination = player.transform.position;
-
-		//}
-		//else
-		//{
-		//	anim.SetInteger("Animation", 0);
-
-		//	agent.isStopped = true;
-		//}
-		// Attack
-		//StartCoroutine(MindControlTimer(mindControlDuration));
 	}
 
 	public void BacktoPatrol()
@@ -379,23 +299,18 @@ public class EnemyAI : MonoBehaviour
 			player.GetComponent<AudioSource>().Stop();
 		}
 
-		anim.SetInteger("Animation", 1);
-
-		agent.isStopped = false;
+		AgentMovement("patrol");
 
 		searching = false;
 		searchWait = false;
 		combatStart = false;
-		shot = false;
 		canShoot = false;
+		shot = false;
 
-		arrived = 0;
-		agent.destination = patrolPos1.position;
-
-		Debug.Log("I lost you!");
+		distanceTarget = 10f;
 	}
 
-	void WeaponDraw(bool draw)
+	public void WeaponDraw(bool draw)
 	{
 		if (!draw)
 		{
@@ -411,18 +326,11 @@ public class EnemyAI : MonoBehaviour
 
 	IEnumerator PatrolTimer(float time)
 	{
-		Debug.Log("Patrolling in " + time + " seconds");
-
 		yield return new WaitForSeconds(time);
 
 		BacktoPatrol();
-	}
 
-	IEnumerator MindControlTimer(float time)
-	{
-		yield return new WaitForSeconds(time);
-
-		mindControl = false;
+		patrolCoroutine = null;
 	}
 
 	IEnumerator SearchWait(float time)

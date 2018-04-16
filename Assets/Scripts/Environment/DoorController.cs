@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+	// Components
 	private Animator anim;
-	public bool doorLock;
+
+	// Variables
+	public bool doorLock = true;
 	public bool securedLock;
 
 	void Start()
 	{
 		anim = GetComponent<Animator>();
-
-		doorLock = true;
 	}
 
 	void OnTriggerEnter()

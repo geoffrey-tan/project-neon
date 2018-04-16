@@ -4,123 +4,86 @@ using UnityEngine;
 
 public class PlayerAbility : MonoBehaviour
 {
+	// Components
+	private GameObject distractObject;
 	private Animator anim;
-	private Renderer playerSword0, playerSword1, playerSword2, playerSword3;
-
-	private Coroutine sheathCoroutine;
-
 	private Collider attackTrigger;
+	//private LineRenderer laserLine;
 
-	private float sheathTime = 5f;
-	private bool attackCD;
-	private bool weaponLethal;
-	private LineRenderer laserLine;
-
-	private GameObject distractTarget;
+	// Variables
+	private bool abilityCD; // Global ability cooldown
 
 	void Start()
 	{
-		laserLine = transform.Find("Aim").GetComponent<LineRenderer>();
 		anim = GetComponent<Animator>();
-
-		playerSword0 = transform.Find("Root/Ribs/PlayerSword (0)").GetComponent<Renderer>();
-		playerSword1 = transform.Find("Root/Ribs/PlayerSword (1)").GetComponent<Renderer>();
-		playerSword2 = transform.Find("Root/Ribs/Left_Shoulder_Joint_01/Left_Upper_Arm_Joint_01/Left_Forearm_Joint_01/Left_Wrist_Joint_01/PlayerSword (2)").GetComponent<Renderer>();
-		playerSword3 = transform.Find("Root/Ribs/Right_Shoulder_Joint_01/Right_Upper_Arm_Joint_01/Right_Forearm_Joint_01/Right_Wrist_Joint_01/PlayerSword (3)").GetComponent<Renderer>();
-
 		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
+		//laserLine = transform.Find("Aim").GetComponent<LineRenderer>();
 	}
+
 	void Update() // https://answers.unity.com/questions/20717/inputgetbuttondown-inconsistent.html
 	{
-		if (Input.GetButtonDown("Interact") && !attackCD) // Attack 
+		if (Input.GetButtonDown("Interact") && !abilityCD) // Attack 
 		{
-
-			WeaponAttack();
+			Interact();
 		}
 
-		if (Input.GetButtonDown("Distract")) // Distract
+		if (Input.GetButtonDown("Distract") && !abilityCD) // Distract
 		{
-
 			Distract();
 		}
 	}
 
-	void Distract()
-	{
-		if (distractTarget != null)
-		{
-			distractTarget.GetComponent<Distraction>().distract = true;
-
-		}
-	}
-
-	private void OnTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Distraction"))
 		{
-			distractTarget = other.gameObject;
+			distractObject = other.gameObject; // Distraction object
 		}
 	}
 
-	private void OnTriggerExit(Collider other)
+	void OnTriggerExit(Collider other)
 	{
-
-	}
-
-	void WeaponDraw(bool draw)
-	{
-		if (!draw)
+		if (other.gameObject.CompareTag("Distraction"))
 		{
-			playerSword0.enabled = true;
-			playerSword1.enabled = true;
-			playerSword2.enabled = false;
-			playerSword3.enabled = false;
+			distractObject = null;
 		}
-		else
+	}
+
+	void Interact()
+	{
+		anim.SetTrigger("Interact");
+
+		StartCoroutine(InteractTimer(0.2f));
+		StartCoroutine(AbilityCooldown(1f));
+	}
+
+	void Distract()
+	{
+		if (distractObject != null)
 		{
-			playerSword0.enabled = false;
-			playerSword1.enabled = false;
-			playerSword2.enabled = true;
-			playerSword3.enabled = true;
+			anim.SetTrigger("Distract");
 
-			if (sheathCoroutine != null) // https://answers.unity.com/questions/1029332/restart-a-coroutine.html
-			{
-				StopCoroutine(sheathCoroutine);
-			}
+			StartCoroutine(AbilityCooldown(1f));
 
-			sheathCoroutine = StartCoroutine(SheathTimer(sheathTime));
+			distractObject.GetComponent<Distraction>().distract = true;
 		}
 	}
 
-	void WeaponAttack()
+	IEnumerator InteractTimer(float time)
 	{
-
-		StartCoroutine(AttackTimer(1f));
-
-		anim.SetTrigger("MeleeLethal");
-
-		WeaponDraw(true);
-	}
-
-	private IEnumerator AttackTimer(float time)
-	{
-		attackCD = true;
 		attackTrigger.enabled = true;
 
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(time);
 
 		attackTrigger.enabled = false;
-
-		yield return new WaitForSeconds(time);
-
-		attackCD = false;
 	}
 
-	private IEnumerator SheathTimer(float time)
+	IEnumerator AbilityCooldown(float time)
 	{
+		abilityCD = true;
+
 		yield return new WaitForSeconds(time);
 
-		WeaponDraw(false);
+		abilityCD = false;
 	}
-
 }
