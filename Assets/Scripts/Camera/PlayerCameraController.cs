@@ -12,12 +12,12 @@ public class PlayerCameraController : MonoBehaviour
 	public Transform lookAt; // Target for camera
 	private Transform self;
 
-<<<<<<< HEAD
+
 	private float distance = 2f;
-=======
+
 	// Variables
-	private float distance = 4f;
->>>>>>> master
+//	private float distance = 4f;
+
 	private float currentX;
 	private float currentY = -25f;
 	private float sensitivityX = 2f;
