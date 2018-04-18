@@ -220,16 +220,15 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	IEnumerator DistractionTimer(float time, GameObject target)
+	IEnumerator DistractionTimer(float time, GameObject target = null)
 	{
 		if (target != null)
 		{
 			target.GetComponent<EnemyFieldOfView>().targetMask = LayerMask.GetMask("Nothing");
+			GetEnemyField.targetMask = LayerMask.GetMask("Nothing");
 
 			StartCoroutine(DistractionShoot(target));
 		}
-
-		GetEnemyField.targetMask = LayerMask.GetMask("Nothing");
 
 		yield return new WaitForSeconds(time);
 

@@ -38,14 +38,23 @@ public class AudioTrigger : MonoBehaviour
 		{
 			if (self.gameObject.CompareTag("PickUp"))
 			{
+				dialogAudio.volume = 0f;
+				messageAudio.volume = 1f;
+
 				PlayAudioMessage(thisName);
+
+				transform.gameObject.SetActive(false);
 			}
-			else if (self.gameObject.CompareTag("Dialog"))
+
+			if (self.gameObject.CompareTag("Dialog"))
 			{
 				if (dialogID != "")
 				{
-					messageAudio.Stop();
+					dialogAudio.volume = 1f;
+					messageAudio.volume = 0f;
+
 					GetDialogs.PlayDialog(dialogID);
+
 					transform.gameObject.SetActive(false);
 				}
 				else
@@ -58,46 +67,6 @@ public class AudioTrigger : MonoBehaviour
 
 	void PlayAudioMessage(string number)
 	{
-		thisAudioClip = GetAudioMessage.ReturnMessage(number);
-
-		if (!messageAudio.isPlaying && !dialogAudio.isPlaying)
-		{
-			messageAudio.clip = thisAudioClip;
-			messageAudio.Play();
-
-			transform.gameObject.SetActive(false);
-		}
-		else if (dialogAudio.isPlaying)
-		{
-			DelayedPlay(dialogAudio);
-		}
-		else
-		{
-			DelayedPlay(messageAudio);
-		}
-	}
-
-	void DelayedPlay(AudioSource audioSource)
-	{
-		Renderer[] renders = self.transform.GetComponentsInChildren<Renderer>();
-
-		for (int i = 0; i < renders.Length; i++)
-		{
-			renders[i].enabled = false;
-		}
-
-		thisLength = audioSource.clip.length;
-		timeLeft = thisLength - audioSource.time;
-
-		StartCoroutine(AudioPlayList(timeLeft));
-	}
-
-	IEnumerator AudioPlayList(float timer)
-	{
-		yield return new WaitForSeconds(timer + 1f);
-
-		messageAudio.clip = thisAudioClip;
-		messageAudio.Play();
-		transform.gameObject.SetActive(false);
+		GetAudioMessage.ConvertToAudio(number);
 	}
 }

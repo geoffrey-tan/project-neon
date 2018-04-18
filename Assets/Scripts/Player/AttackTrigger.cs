@@ -35,6 +35,7 @@ public class AttackTrigger : MonoBehaviour
 	void OpenDoor(Collider other)
 	{
 		other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().doorLock = false;
+		other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().anim.SetBool("character_nearby", true);
 
 		Collider[] colliders = other.gameObject.transform.parent.Find("door_2").GetComponentsInChildren<Collider>();
 

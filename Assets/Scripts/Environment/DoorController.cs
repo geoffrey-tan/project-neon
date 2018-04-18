@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
 	// Components
-	private Animator anim;
+	public Animator anim;
 
 	// Variables
 	public bool doorLock = true;

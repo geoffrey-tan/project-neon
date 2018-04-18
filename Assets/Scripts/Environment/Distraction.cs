@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Distraction : MonoBehaviour
 {
-	// Components      
-	public List<GameObject> targets; // https://stackoverflow.com/questions/249452/add-new-item-in-existing-array-in-c-net
-
 	// Scripts
 	private EnemyAI GetEnemyAI;
+
+	// Lists   
+	public List<GameObject> targets; // https://stackoverflow.com/questions/249452/add-new-item-in-existing-array-in-c-net
+
 
 	// Variables
 	public bool canDistract;
