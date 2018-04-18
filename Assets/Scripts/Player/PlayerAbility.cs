@@ -8,6 +8,7 @@ public class PlayerAbility : MonoBehaviour
 	private GameObject distractObject;
 	private Animator anim;
 	private Collider attackTrigger;
+	private GameObject self;
 	//private LineRenderer laserLine;
 
 	// Variables
@@ -17,6 +18,7 @@ public class PlayerAbility : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
+		self = gameObject;
 		//laserLine = transform.Find("Aim").GetComponent<LineRenderer>();
 	}
 
@@ -27,7 +29,7 @@ public class PlayerAbility : MonoBehaviour
 			Interact();
 		}
 
-		if (Input.GetButtonDown("Distract") && !abilityCD) // Distract
+		if (Input.GetButtonDown("Distract") && !abilityCD && !self.CompareTag("Enemy")) // Distract
 		{
 			Distract();
 		}

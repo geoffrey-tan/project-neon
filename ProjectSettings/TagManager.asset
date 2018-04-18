@@ -10,6 +10,7 @@ TagManager:
   - Button
   - Distraction
   - Dialog
+  - Safespot
   layers:
   - Default
   - TransparentFX

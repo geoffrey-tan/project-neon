@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AttackTrigger : MonoBehaviour
 {
+	public static bool mindControl;
+
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null)
+		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null && !mindControl)
 		{
+			mindControl = true;
 			other.gameObject.GetComponent<MindControl>().mindControl = true;
-			StartCoroutine(other.gameObject.GetComponent<MindControl>().MindControlTimer(10f)); // Duration
 		}
 
 		if (other.gameObject.CompareTag("Button"))

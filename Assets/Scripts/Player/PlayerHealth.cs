@@ -9,8 +9,12 @@ public class PlayerHealth : MonoBehaviour
 	private Slider healthBar;
 	private Image healthBarColor;
 
+	// Scripts
+	private PlayerCameraController GetPlayerCamera;
+
 	// Variables
 	public float health;
+	public bool mindControl;
 
 	void Start()
 	{
@@ -20,10 +24,17 @@ public class PlayerHealth : MonoBehaviour
 		healthBarColor = GameObject.Find("Health Bar").transform.Find("Fill Area/Fill").GetComponent<Image>();
 
 		healthBar.value = health;
+
+		GetPlayerCamera = Camera.main.GetComponent<PlayerCameraController>();
 	}
 
 	public void PlayerDamage()
 	{
+		if (GetPlayerCamera.lookAt.name != "CameraPos")
+		{
+			GetPlayerCamera.lookAt.parent.GetComponent<MindControl>().Mindcontrol(false);
+		}
+
 		if (health > 20)
 		{
 			health -= 40f;
@@ -49,5 +60,21 @@ public class PlayerHealth : MonoBehaviour
 	{
 		//transform.GetComponent<PlayerController>().enabled = false;
 		healthBarColor.color = Color.clear;
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Safespot"))
+		{
+			EnemyAI.safeSpot = true;
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.CompareTag("Safespot"))
+		{
+			EnemyAI.safeSpot = false;
+		}
 	}
 }

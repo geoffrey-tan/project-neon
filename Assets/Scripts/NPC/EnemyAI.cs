@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+	// Statics
+	public static bool safeSpot;
+	public static int enemiesInCombat;
+
 	// Components
 	private Transform self;
 	private GameObject player;
@@ -15,19 +19,24 @@ public class EnemyAI : MonoBehaviour
 	// Scripts
 	private MindControl GetMindControl;
 	private AudioEventController audioEventController;
+	private EnemyFieldOfView GetEnemyField;
 
 	// Variables
 	private Coroutine coroutine;
 	private Coroutine patrolCoroutine;
 	private Coroutine coroutineDistracted;
+	private Vector3 playerPosition;
 
 	//public bool mindControl;
 	public bool distracted;
+	public GameObject bullet;
 
-	public float patrolSpeed = 0.25f;
-	public float searchSpeed = 1f;
-	public float combatSpeed = 1.25f;
+	public float patrolSpeed = 1f;
+	public float searchSpeed = 2.5f;
+	public float combatSpeed = 5f;
 	private float distanceTarget = 10f;
+
+	public Vector3 searchTarget;
 
 	public bool searching;
 	public bool searchWait;
@@ -46,6 +55,7 @@ public class EnemyAI : MonoBehaviour
 
 		GetMindControl = transform.GetComponent<MindControl>();
 		audioEventController = GetComponent<AudioEventController>();
+		GetEnemyField = GetComponent<EnemyFieldOfView>();
 
 		enemyGun0 = transform.Find("Armature/Hips/Spine/Chest/EnemyGun (0)").GetComponent<Renderer>();
 		enemyGun1 = transform.Find("Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.r/LowerArm.R/Hand.R/EnemyGun (1)").GetComponent<Renderer>();
@@ -56,6 +66,11 @@ public class EnemyAI : MonoBehaviour
 
 	void Update()
 	{
+		if (safeSpot && enemiesInCombat > 0)
+		{
+			BacktoPatrol();
+		}
+
 		if (!GetMindControl.mindControl) // Not mindcontrolled
 		{
 			if (combatStart)
@@ -66,11 +81,17 @@ public class EnemyAI : MonoBehaviour
 			{
 				Distracted(null); // Distracted by object
 			}
+			else if (searching)
+			{
+				AgentDestination(searchTarget);
+			}
 			else if (!searching)
 			{
 				Patrol();
 			}
 		}
+
+		playerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 	}
 
 	void Patrol()
@@ -115,6 +136,8 @@ public class EnemyAI : MonoBehaviour
 		searching = true; // Patrol -> Searching      
 		audioEventController.PlaySFX("alert0");
 
+		searchTarget = lastSeen;
+
 		WeaponDraw(true);
 		AgentMovement("searching");
 		AgentDestination(lastSeen);
@@ -125,7 +148,8 @@ public class EnemyAI : MonoBehaviour
 		}
 		else
 		{
-			searchWait = true; // Searching -> Combat
+			searchWait = true;
+			combatStart = true; // Searching -> Combat
 		}
 
 		patrolCoroutine = StartCoroutine(PatrolTimer(20f));
@@ -133,6 +157,8 @@ public class EnemyAI : MonoBehaviour
 
 	public void Combat()
 	{
+		enemiesInCombat++;
+
 		WeaponDraw(true);
 		AgentMovement("combat");
 		AgentDestination(player.transform.position);
@@ -147,7 +173,7 @@ public class EnemyAI : MonoBehaviour
 
 	public void Shoot()
 	{
-		transform.LookAt(player.transform);
+		transform.LookAt(playerPosition);
 
 		var damageOverlay = GameObject.Find("ScreenFlash").transform.Find("Damage").gameObject;
 
@@ -155,7 +181,7 @@ public class EnemyAI : MonoBehaviour
 		{
 			shot = true;
 
-			transform.LookAt(player.transform);
+			transform.LookAt(playerPosition);
 
 			audioEventController.PlaySFX("gun0");
 			player.GetComponent<Animator>().SetTrigger("Hit");
@@ -185,18 +211,34 @@ public class EnemyAI : MonoBehaviour
 
 		if (target != null)
 		{
-			transform.LookAt(target.transform.position); // Mind-Control distract         
+			transform.LookAt(target.transform.position); // Mind-Control distract           
 		}
 
 		if (coroutineDistracted == null)
 		{
-			coroutineDistracted = StartCoroutine(DistractionTimer(10f));
+			coroutineDistracted = StartCoroutine(DistractionTimer(10f, target));
 		}
 	}
 
-	IEnumerator DistractionTimer(float time)
+	IEnumerator DistractionTimer(float time, GameObject target)
 	{
+		if (target != null)
+		{
+			target.GetComponent<EnemyFieldOfView>().targetMask = LayerMask.GetMask("Nothing");
+
+			StartCoroutine(DistractionShoot(target));
+		}
+
+		GetEnemyField.targetMask = LayerMask.GetMask("Nothing");
+
 		yield return new WaitForSeconds(time);
+
+		if (target != null)
+		{
+			target.GetComponent<EnemyFieldOfView>().targetMask = LayerMask.GetMask("Player");
+		}
+
+		GetEnemyField.targetMask = LayerMask.GetMask("Player");
 
 		distracted = false;
 
@@ -205,13 +247,24 @@ public class EnemyAI : MonoBehaviour
 		coroutineDistracted = null;
 	}
 
+	IEnumerator DistractionShoot(GameObject target)
+	{
+		audioEventController.PlaySFX("gun1", target);
+
+		anim.SetTrigger("RangedGun");
+
+		yield return new WaitForSeconds(2f);
+
+		if (distracted)
+		{
+			StartCoroutine(DistractionShoot(target));
+		}
+	}
+
 	void AgentDestination(Vector3 target)
 	{
-		if (Vector3.Distance(self.position, player.transform.position) > 25f) // Too far -> Patrol
-		{
-			BacktoPatrol();
-		}
-		else if (!combatStart)
+
+		if (!combatStart)
 		{
 			if (Vector3.Distance(self.position, target) > 2f) // Move to Last Seen
 			{
@@ -220,8 +273,11 @@ public class EnemyAI : MonoBehaviour
 			else // Stop, wait
 			{
 				AgentMovement("aim");
-				transform.LookAt(player.transform);
 			}
+		}
+		else if (Vector3.Distance(self.position, player.transform.position) > 25f) // Too far -> Patrol
+		{
+			BacktoPatrol();
 		}
 		else
 		{
@@ -232,7 +288,7 @@ public class EnemyAI : MonoBehaviour
 			else // Stop, wait
 			{
 				AgentMovement("aim");
-				transform.LookAt(player.transform);
+				transform.LookAt(playerPosition);
 
 				if (coroutine == null) // Restart coroutine https://answers.unity.com/questions/1029332/restart-a-coroutine.html
 				{
@@ -245,7 +301,6 @@ public class EnemyAI : MonoBehaviour
 						coroutine = StartCoroutine(MoveTimer(10f));
 					}
 				}
-
 			}
 		}
 	}
@@ -309,6 +364,8 @@ public class EnemyAI : MonoBehaviour
 
 	public void BacktoPatrol()
 	{
+		enemiesInCombat--;
+
 		if (player.GetComponent<AudioSource>().isPlaying)
 		{
 			player.GetComponent<AudioSource>().Stop();
