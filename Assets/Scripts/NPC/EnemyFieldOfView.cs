@@ -54,7 +54,7 @@ public class EnemyFieldOfView : MonoBehaviour
 		{
 			targetMask = LayerMask.GetMask("Enemy");
 		}
-		else
+		else if (!GetEnemyAI.distracted)
 		{
 			targetMask = LayerMask.GetMask("Player");
 		}
@@ -108,8 +108,11 @@ public class EnemyFieldOfView : MonoBehaviour
 			currentTarget.transform.GetComponent<EnemyAI>().distracted = true;
 			currentTarget.transform.GetComponent<EnemyAI>().Distracted(gameObject);
 
+			transform.GetComponent<EnemyAI>().distracted = true;
+			transform.GetComponent<EnemyAI>().Distracted(currentTarget.gameObject);
 			transform.LookAt(currentTarget.position);
-			GetEnemyAI.WeaponDraw(true);
+
+			GetMindControl.Mindcontrol(false);
 
 			if (!GetEnemyAI.shot)
 			{

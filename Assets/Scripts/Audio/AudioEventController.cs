@@ -29,7 +29,7 @@ public class AudioEventController : MonoBehaviour
 		}
 	}
 
-	public void PlaySFX(string audio) // Public function
+	public void PlaySFX(string audio, GameObject target = null) // Public function
 	{
 		switch (audio)
 		{
@@ -38,6 +38,9 @@ public class AudioEventController : MonoBehaviour
 				break;
 			case "gun0":
 				player.GetComponent<AudioSource>().PlayOneShot(gun0);
+				break;
+			case "gun1":
+				target.GetComponent<AudioSource>().PlayOneShot(gun0);
 				break;
 		}
 	}

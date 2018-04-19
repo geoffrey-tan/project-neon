@@ -24,6 +24,7 @@ public class MindControl : MonoBehaviour
 	public RuntimeAnimatorController animatorControllerMindControl;
 
 	// Variables
+	private Coroutine coroutineMind;
 	public bool mindControl;
 	private bool abilityCD;
 
@@ -53,6 +54,11 @@ public class MindControl : MonoBehaviour
 			{
 				Interact();
 			}
+
+			if (Input.GetButtonDown("Mind-Control") && !abilityCD) // Interact
+			{
+				Mindcontrol(false);
+			}
 		}
 	}
 
@@ -64,27 +70,36 @@ public class MindControl : MonoBehaviour
 		StartCoroutine(AbilityCooldown(1f));
 	}
 
-	void Mindcontrol(bool yes)
+	public void Mindcontrol(bool yes)
 	{
 		if (yes)
 		{
 			anim.runtimeAnimatorController = animatorControllerMindControl; // Change animations
-			GetPlayerCameraController.lookAt = cameraPos; // Change camera position
+			GetPlayerCameraController.lookAt = cameraPos; // Change camera position         
+			GetEnemyAI.WeaponDraw(true);
 
+			player.GetComponent<PlayerAbility>().enabled = false;
 			player.GetComponent<ThirdPersonCharacter>().enabled = false;
 			player.GetComponent<ThirdPersonUserControl>().enabled = false;
 
 			navMeshAgent.enabled = false;
 			GetCharacter.enabled = true;
 			GetThirdPersonUserControl.enabled = true;
+
+			if (coroutineMind == null)
+			{
+				coroutineMind = StartCoroutine(MindControlTimer(10f));
+			}
 		}
 		else if (!yes)
 		{
 			mindControl = false;
+			AttackTrigger.mindControl = false;
 
 			anim.runtimeAnimatorController = animatorController;
 			GetPlayerCameraController.lookAt = player.transform.Find("CameraPos");
 
+			player.GetComponent<PlayerAbility>().enabled = true;
 			player.GetComponent<ThirdPersonCharacter>().enabled = true;
 			player.GetComponent<ThirdPersonUserControl>().enabled = true;
 
@@ -92,7 +107,12 @@ public class MindControl : MonoBehaviour
 			GetCharacter.enabled = false;
 			GetThirdPersonUserControl.enabled = false;
 
-			GetEnemyAI.BacktoPatrol();
+			if (!player.GetComponent<AudioSource>().isPlaying)
+			{
+				GetEnemyAI.BacktoPatrol();
+			}
+
+			coroutineMind = null;
 		}
 	}
 

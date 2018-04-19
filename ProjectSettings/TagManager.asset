@@ -9,6 +9,8 @@ TagManager:
   - PickUp
   - Button
   - Distraction
+  - Dialog
+  - Safespot
   layers:
   - Default
   - TransparentFX

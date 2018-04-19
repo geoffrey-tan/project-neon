@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: d0743681a1fda449a813bbb856adac46
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - P1_1: {fileID: 8300000, guid: 3f36814776e0a4608b20f920516a4ae5, type: 3}
+  - P1_2: {fileID: 8300000, guid: a562c638168b54c4893959f6ba1a66b2, type: 3}
+  - P1_3: {fileID: 8300000, guid: e7ce7369a69a74cb8ab352aba5dbf748, type: 3}
+  - P1_4: {fileID: 8300000, guid: d285e876a876c436482ba13a2171990c, type: 3}
+  - P1_5: {fileID: 8300000, guid: aef5b0e314deb48a59ee31be3875d311, type: 3}
+  - T2_1_1: {instanceID: 0}
+  - T2_1_2: {instanceID: 0}
+  - T2_2_1: {instanceID: 0}
+  - T2_2_2: {instanceID: 0}
+  - T2_3_1: {instanceID: 0}
+  - T2_3_2: {instanceID: 0}
+  - T2_4_1: {instanceID: 0}
+  - T2_4_2: {instanceID: 0}
+  - T2_5_5: {instanceID: 0}
+  - T2_5_6: {instanceID: 0}
+  - T2_5_7: {instanceID: 0}
+  - T2_5_9: {instanceID: 0}
+  - T2_5_10: {instanceID: 0}
+  - T2_5_11: {instanceID: 0}
+  - T2_5_13: {instanceID: 0}
+  - T2_5_14: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

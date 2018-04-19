@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AttackTrigger : MonoBehaviour
 {
+	public static bool mindControl;
+
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null)
+		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null && !mindControl)
 		{
+			mindControl = true;
 			other.gameObject.GetComponent<MindControl>().mindControl = true;
-			StartCoroutine(other.gameObject.GetComponent<MindControl>().MindControlTimer(10f)); // Duration
 		}
 
 		if (other.gameObject.CompareTag("Button"))
@@ -33,6 +35,7 @@ public class AttackTrigger : MonoBehaviour
 	void OpenDoor(Collider other)
 	{
 		other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().doorLock = false;
+		other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().anim.SetBool("character_nearby", true);
 
 		Collider[] colliders = other.gameObject.transform.parent.Find("door_2").GetComponentsInChildren<Collider>();
 
