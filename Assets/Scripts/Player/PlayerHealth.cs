@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
 
 		GetPlayerCamera = Camera.main.GetComponent<PlayerCameraController>();
 
-		if (DataSave.lastCheckpoint != new Vector3(0, 0, 0))
+		if (DataSave.lastCheckpoint != new Vector3(0, 0, 0)) // Reload from last checkpoint
 		{
 			player.transform.position = DataSave.lastCheckpoint;
 		}
@@ -103,6 +103,28 @@ public class PlayerHealth : MonoBehaviour
 		{
 			DataSave.lastCheckpoint = other.transform.position;
 			EnemyAI.safeSpot = true;
+		}
+
+		if (other.gameObject.CompareTag("Entrance"))
+		{
+			switch (other.name)
+			{
+				case "OW0":
+					LevelTransition.EnterLVL(0);
+					break;
+				case "LVL1":
+					LevelTransition.EnterLVL(0);
+					break;
+				case "LVL2":
+					LevelTransition.EnterLVL(0);
+					break;
+				case "LVL3":
+					LevelTransition.EnterLVL(0);
+					break;
+				case "LVLBOSS":
+					LevelTransition.EnterLVL(0);
+					break;
+			}
 		}
 	}
 
