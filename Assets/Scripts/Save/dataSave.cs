@@ -2,7 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dataSave : MonoBehaviour
+public class DataSave : MonoBehaviour
 {
-	public int Audio;
+	// Instance
+	public static DataSave instance;
+
+	// Statics
+	public static List<string> collected = new List<string>();
+	public static Vector3 lastCheckpoint;
+
+	void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			DestroyImmediate(gameObject);
+		}
+	}
 }

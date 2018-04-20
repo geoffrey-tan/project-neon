@@ -401,7 +401,7 @@ public class EnemyAI : MonoBehaviour
 
 		BacktoPatrol();
 
-		patrolCoroutine = null;
+		//patrolCoroutine = null;
 	}
 
 	IEnumerator SearchWait(float time)
