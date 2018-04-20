@@ -57,7 +57,7 @@ public class MindControl : MonoBehaviour
 
 			if (Input.GetButtonDown("Mind-Control") && !abilityCD) // Interact
 			{
-				Mindcontrol(false);
+				Mindcontrol(false, true);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ public class MindControl : MonoBehaviour
 		StartCoroutine(AbilityCooldown(1f));
 	}
 
-	public void Mindcontrol(bool yes)
+	public void Mindcontrol(bool yes, bool stunned = false)
 	{
 		if (yes)
 		{
@@ -107,7 +107,16 @@ public class MindControl : MonoBehaviour
 			GetCharacter.enabled = false;
 			GetThirdPersonUserControl.enabled = false;
 
-			if (!player.GetComponent<AudioSource>().isPlaying)
+			//if (!player.GetComponent<AudioSource>().isPlaying) // Remove this?
+			//{
+			//	GetEnemyAI.BacktoPatrol();
+			//}
+
+			if (stunned)
+			{
+				StartCoroutine(GetEnemyAI.PatrolTimer(5f, true));
+			}
+			else
 			{
 				GetEnemyAI.BacktoPatrol();
 			}

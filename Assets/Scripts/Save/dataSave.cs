@@ -8,6 +8,7 @@ public class DataSave : MonoBehaviour
 	public static DataSave instance;
 
 	// Statics
+	public static List<int> levelBeaten = new List<int>();
 	public static List<string> collected = new List<string>();
 	public static Vector3 lastCheckpoint;
 

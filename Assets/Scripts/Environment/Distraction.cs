@@ -71,8 +71,7 @@ public class Distraction : MonoBehaviour
 			// https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
 			Vector3 targetPosition = new Vector3(transform.position.x, targets[i].transform.position.y, transform.position.z);
 
-			targets[i].GetComponent<EnemyAI>().distracted = true;
-			targets[i].transform.LookAt(targetPosition);
+			targets[i].GetComponent<EnemyAI>().Distracted(gameObject, true);
 		}
 	}
 }

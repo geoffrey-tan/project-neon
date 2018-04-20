@@ -105,19 +105,12 @@ public class EnemyFieldOfView : MonoBehaviour
 	{
 		if (currentTarget != null)
 		{
-			currentTarget.transform.GetComponent<EnemyAI>().distracted = true;
-			currentTarget.transform.GetComponent<EnemyAI>().Distracted(gameObject);
-
-			transform.GetComponent<EnemyAI>().distracted = true;
-			transform.GetComponent<EnemyAI>().Distracted(currentTarget.gameObject);
-			transform.LookAt(currentTarget.position);
-
 			GetMindControl.Mindcontrol(false);
 
-			if (!GetEnemyAI.shot)
-			{
-				StartCoroutine(GetEnemyAI.ShootTimer(2f));
-			}
+			currentTarget.transform.GetComponent<EnemyAI>().Distracted(gameObject);
+
+			transform.GetComponent<EnemyAI>().Distracted(currentTarget.gameObject);
+			transform.LookAt(currentTarget.position);
 		}
 	}
 

@@ -18,7 +18,6 @@ public class PlayerCameraController : MonoBehaviour
 	private float currentY = -25f;
 	private float sensitivityX = 2f;
 	private float sensitivityY = 1f;
-	public bool hit;
 
 	void Start()
 	{
@@ -41,31 +40,5 @@ public class PlayerCameraController : MonoBehaviour
 		self.position = lookAt.position + rotation * dir;
 
 		self.LookAt(lookAt.position);
-
-		//if (Physics.Raycast()) [
-		//]
-
-		//var relativePos = transform.position - (lookAt.position);
-		//RaycastHit hit;
-		//if (Physics.Raycast(lookAt.position, relativePos, hit.point, distance + 0.5))
-		//{
-		//    Debug.DrawLine(target.position, hit.point);
-		//    distanceOffset = distance - hit.distance + 0.8;
-		//    distanceOffset = Mathf.Clamp(distanceOffset, 0, distance);
-		//}
-		//else
-		//{
-		//    distanceOffset = 0;
-		//}
-	}
-
-	void OnTriggerEnter()
-	{
-		hit = true;
-	}
-
-	void OnTriggerExit()
-	{
-		hit = false;
 	}
 }
