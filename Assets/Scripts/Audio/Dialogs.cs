@@ -7,9 +7,6 @@ public class Dialogs : MonoBehaviour
 	// Components
 	private AudioSource audioSource;
 
-	// Scripts
-	private Dialogs GetDialogs;
-
 	// Assets
 	public AudioClip P1_1, P1_2, P1_3, P1_4, P1_5;
 
@@ -21,6 +18,7 @@ public class Dialogs : MonoBehaviour
 
 	// Lists
 	public List<AudioClip> PlayList;
+	public List<float> list;
 
 	// Variables
 	public Coroutine coroutine;
@@ -31,8 +29,10 @@ public class Dialogs : MonoBehaviour
 		audioSource = GetComponent<AudioSource>();
 	}
 
-	public void PlayDialog(string dialog)
+	public List<float> PlayDialog(string dialog)
 	{
+		float count = 0;
+
 		if (coroutine != null)
 		{
 			StopCoroutine(coroutine); // https://docs.unity3d.com/ScriptReference/MonoBehaviour.StopCoroutine.html
@@ -54,18 +54,22 @@ public class Dialogs : MonoBehaviour
 				break;
 
 			case "T-1": // Start
+				CutsceneCamera.interact = true;
 				PlayList.Add(T2_1_1);
 				PlayList.Add(T2_1_2);
 				break;
 			case "T-2": // Sneak
+				CutsceneCamera.interact = true;
 				PlayList.Add(T2_2_1);
 				PlayList.Add(T2_2_2);
 				break;
 			case "T-3": // Checkpoint
+				CutsceneCamera.interact = true;
 				PlayList.Add(T2_3_1);
 				PlayList.Add(T2_3_2);
 				break;
 			case "T-4": // Stairs
+				CutsceneCamera.interact = true;
 				PlayList.Add(T2_4_1);
 				PlayList.Add(T2_4_2);
 				break;
@@ -97,6 +101,18 @@ public class Dialogs : MonoBehaviour
 		}
 
 		coroutine = StartCoroutine(AudioPlayList(PlayList[0].length));
+
+		for (int i = 0; i < PlayList.Count; i++)
+		{
+			count += PlayList[i].length;
+		}
+
+		count += (PlayList.Count / 2);
+
+		list.Add(PlayList[0].length); // Length first audio
+		list.Add(count); // Length all audio
+
+		return list;
 	}
 
 	IEnumerator AudioPlayList(float timer)
@@ -104,7 +120,7 @@ public class Dialogs : MonoBehaviour
 		audioSource.clip = PlayList[0];
 		audioSource.Play(); // Play first audio
 
-		yield return new WaitForSeconds(timer + 1f);
+		yield return new WaitForSeconds(timer + 0.5f);
 
 		PlayList.RemoveAt(0); // Remove first audio
 
