@@ -15,7 +15,7 @@ public class AudioMessage : MonoBehaviour
 	public AudioClip LV3_1, LV3_2, LV3_3;
 
 	// Lists
-	public List<AudioClip> PlayList;
+	public static List<AudioClip> PlayList = new List<AudioClip>();
 
 	private void Start()
 	{

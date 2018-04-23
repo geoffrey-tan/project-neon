@@ -10,7 +10,6 @@ public class Distraction : MonoBehaviour
 	// Lists   
 	public List<GameObject> targets; // https://stackoverflow.com/questions/249452/add-new-item-in-existing-array-in-c-net
 
-
 	// Variables
 	public bool canDistract;
 	public bool distract;
@@ -62,17 +61,13 @@ public class Distraction : MonoBehaviour
 		}
 	}
 
-	void Distracted()
+	public void Distracted()
 	{
 		distract = false;
 
 		for (int i = 0; i < targets.Count; i++)
 		{
-			// https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
-			Vector3 targetPosition = new Vector3(transform.position.x, targets[i].transform.position.y, transform.position.z);
-
-			targets[i].GetComponent<EnemyAI>().distracted = true;
-			targets[i].transform.LookAt(targetPosition);
+			targets[i].GetComponent<EnemyAI>().Distracted(gameObject, true);
 		}
 	}
 }
