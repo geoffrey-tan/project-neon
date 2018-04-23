@@ -1881,6 +1881,7 @@ MonoBehaviour:
   cameraTarget: {fileID: 1973960405891740}
   targetLookAt: {fileID: 0}
   list: []
+  decisionCutscene: 0
   cameraSpeed: 2
 --- !u!124 &124797220615442272
 Behaviour:

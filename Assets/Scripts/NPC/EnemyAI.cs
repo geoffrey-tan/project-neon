@@ -86,6 +86,7 @@ public class EnemyAI : MonoBehaviour
 			}
 		}
 
+		// https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
 		playerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 	}
 
@@ -264,11 +265,8 @@ public class EnemyAI : MonoBehaviour
 
 	public void AgentDestination(Vector3 target)
 	{
-
 		if (!combatStart)
 		{
-
-
 			if (Vector3.Distance(self.position, target) > 2f) // Move to Last Seen
 			{
 				agent.destination = target;
@@ -373,7 +371,7 @@ public class EnemyAI : MonoBehaviour
 	{
 		enemiesInCombat--;
 
-		if (player.GetComponent<AudioSource>().isPlaying)
+		if (player.GetComponent<AudioSource>().isPlaying && enemiesInCombat == 0)
 		{
 			player.GetComponent<AudioSource>().Stop();
 		}

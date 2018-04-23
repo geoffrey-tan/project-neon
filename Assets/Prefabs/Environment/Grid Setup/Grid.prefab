@@ -2845,7 +2845,6 @@ GameObject:
   - component: {fileID: 95126247749999432}
   - component: {fileID: 54767759883140696}
   - component: {fileID: 136608933177306920}
-  - component: {fileID: 114230966649321510}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10189,18 +10188,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114230966649321510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883766121891986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02ace47f3c6e4591abfc13e4981fc48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grounded: 0
 --- !u!114 &114357822134352430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10212,6 +10199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6642aadd226f4827b5a14e1fa0d8f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  doorLock: 1
+  securedLock: 0
 --- !u!114 &114908826817107064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10223,6 +10213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6642aadd226f4827b5a14e1fa0d8f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  doorLock: 1
+  securedLock: 0
 --- !u!124 &124013904494636488
 Behaviour:
   m_ObjectHideFlags: 1

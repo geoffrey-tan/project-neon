@@ -107,16 +107,11 @@ public class MindControl : MonoBehaviour
 			GetCharacter.enabled = false;
 			GetThirdPersonUserControl.enabled = false;
 
-			//if (!player.GetComponent<AudioSource>().isPlaying) // Remove this?
-			//{
-			//	GetEnemyAI.BacktoPatrol();
-			//}
-
 			if (stunned)
 			{
 				StartCoroutine(GetEnemyAI.PatrolTimer(5f, true));
 			}
-			else
+			else if (!GetEnemyAI.distracted)
 			{
 				GetEnemyAI.BacktoPatrol();
 			}

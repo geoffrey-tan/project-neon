@@ -6,12 +6,10 @@ public class AudioTrigger : MonoBehaviour
 {
 	// Components
 	private GameObject self;
-	private AudioSource messageAudio;
-	private AudioSource dialogAudio;
+	public static AudioSource messageAudio;
 
 	//Scripts
 	private AudioMessage GetAudioMessage;
-	private Dialogs GetDialogs;
 
 	// Variables
 	private AudioClip thisAudioClip;
@@ -23,10 +21,8 @@ public class AudioTrigger : MonoBehaviour
 	{
 		self = gameObject;
 		messageAudio = GameObject.Find("Audio").transform.Find("AudioMessage").GetComponent<AudioSource>();
-		dialogAudio = GameObject.Find("Audio").transform.Find("Dialogs").GetComponent<AudioSource>();
 
 		GetAudioMessage = GameObject.Find("Audio").transform.Find("AudioMessage").GetComponent<AudioMessage>();
-		GetDialogs = GameObject.Find("Audio").transform.Find("Dialogs").GetComponent<Dialogs>();
 
 		if (DataSave.collected.Contains(name))
 		{
@@ -40,7 +36,6 @@ public class AudioTrigger : MonoBehaviour
 		{
 			if (self.gameObject.CompareTag("PickUp"))
 			{
-				dialogAudio.volume = 0f;
 				messageAudio.volume = 1f;
 
 				PlayAudioMessage(name);
@@ -48,23 +43,6 @@ public class AudioTrigger : MonoBehaviour
 				DataSave.collected.Add(name);
 
 				transform.gameObject.SetActive(false);
-			}
-
-			if (self.gameObject.CompareTag("Dialog"))
-			{
-				if (dialogID != "")
-				{
-					dialogAudio.volume = 1f;
-					messageAudio.volume = 0f;
-
-					GetDialogs.PlayDialog(dialogID);
-
-					transform.gameObject.SetActive(false);
-				}
-				else
-				{
-					Debug.Log("Missing Dialog ID for: " + name); // Debug if ID is missing
-				}
 			}
 		}
 	}
