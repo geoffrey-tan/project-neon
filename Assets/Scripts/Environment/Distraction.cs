@@ -67,6 +67,7 @@ public class Distraction : MonoBehaviour
 
 		for (int i = 0; i < targets.Count; i++)
 		{
+			targets[i].GetComponent<EnemyAI>().searchTarget = gameObject.transform.position;
 			targets[i].GetComponent<EnemyAI>().Distracted(gameObject, true);
 		}
 	}

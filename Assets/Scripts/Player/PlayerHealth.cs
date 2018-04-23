@@ -9,6 +9,9 @@ public class PlayerHealth : MonoBehaviour
 {
 	public static GameObject player;
 
+	// Statics
+	public static bool alive;
+
 	// Components
 	private Slider healthBar;
 	private Image healthBarColor;
@@ -24,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
 
 	void Start()
 	{
+		alive = true;
+
 		player = gameObject;
 		anim = GetComponent<Animator>();
 
@@ -53,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if (GetPlayerCamera.lookAt.name != "CameraPos")
 		{
-			GetPlayerCamera.lookAt.parent.GetComponent<MindControl>().Mindcontrol(false);
+			GetPlayerCamera.lookAt.parent.GetComponent<MindControl>().Mindcontrol(false, false, true);
 		}
 
 		if (health > 20)
@@ -80,6 +85,11 @@ public class PlayerHealth : MonoBehaviour
 
 	public void PlayerDies()
 	{
+		alive = false;
+
+		GetComponent<AudioSource>().Stop();
+		GetComponent<AudioEventController>().PlaySFX("death0", gameObject);
+
 		PlayerControl(false);
 		anim.SetTrigger("Death");
 		healthBarColor.color = Color.clear;
@@ -92,6 +102,9 @@ public class PlayerHealth : MonoBehaviour
 	IEnumerator RestartLevel()
 	{
 		yield return new WaitForSeconds(5f);
+
+		EnemyAI.safeSpot = false;
+		alive = true;
 
 		string sceneName = SceneManager.GetActiveScene().name;
 		SceneManager.LoadScene(sceneName, LoadSceneMode.Single);

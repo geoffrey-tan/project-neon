@@ -65,7 +65,7 @@ public class EnemyAI : MonoBehaviour
 
 	void Update()
 	{
-		if (safeSpot && enemiesInCombat > 0)
+		if (safeSpot && !distracted)
 		{
 			BacktoPatrol();
 		}
@@ -76,11 +76,15 @@ public class EnemyAI : MonoBehaviour
 			{
 				Combat();
 			}
-			else if (searching && !distracted)
+			else if (distracted)
 			{
 				AgentDestination(searchTarget);
 			}
-			else if (!searching && !distracted)
+			else if (searching)
+			{
+				AgentDestination(searchTarget);
+			}
+			else if (!searching)
 			{
 				Patrol();
 			}
@@ -144,17 +148,16 @@ public class EnemyAI : MonoBehaviour
 		}
 		else
 		{
+			enemiesInCombat++;
+
 			searchWait = true;
 			combatStart = true; // Searching -> Combat
 		}
-
 		patrolCoroutine = StartCoroutine(PatrolTimer(20f));
 	}
 
 	public void Combat()
 	{
-		enemiesInCombat++;
-
 		WeaponDraw(true);
 		AgentMovement("combat");
 		AgentDestination(player.transform.position);
@@ -164,7 +167,10 @@ public class EnemyAI : MonoBehaviour
 			player.GetComponent<AudioSource>().Play();
 		}
 
-		StopCoroutine(patrolCoroutine);
+		if (patrolCoroutine != null)
+		{
+			StopCoroutine(patrolCoroutine);
+		}
 	}
 
 	public void Shoot()
@@ -369,9 +375,16 @@ public class EnemyAI : MonoBehaviour
 
 	public void BacktoPatrol()
 	{
-		enemiesInCombat--;
+		if (safeSpot)
+		{
+			enemiesInCombat = 0;
+		}
+		else if (enemiesInCombat > 0)
+		{
+			enemiesInCombat--;
+		}
 
-		if (player.GetComponent<AudioSource>().isPlaying && enemiesInCombat == 0)
+		if (player.GetComponent<AudioSource>().isPlaying && enemiesInCombat == 0 && PlayerHealth.alive)
 		{
 			player.GetComponent<AudioSource>().Stop();
 		}

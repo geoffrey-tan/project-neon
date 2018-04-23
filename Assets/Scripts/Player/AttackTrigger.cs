@@ -8,7 +8,7 @@ public class AttackTrigger : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null && !mindControl)
+		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null && !mindControl && !other.GetComponent<EnemyAI>().searching)
 		{
 			mindControl = true;
 			other.gameObject.GetComponent<MindControl>().mindControl = true;

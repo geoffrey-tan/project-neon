@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MenuSelection : MonoBehaviour
 {
-	void Update()
-	{
-		if (Input.GetButtonDown("Cancel") && (name == "LoadGame" || name == "Audiologs"))
-		{
-			transform.parent.Find("Menu").gameObject.SetActive(true);
-			gameObject.SetActive(false);
-		}
-	}
-
 	void OnEnable() // https://answers.unity.com/questions/372752/does-finction-start-or-awake-run-when-the-object-o.html
 	{
 		StartCoroutine(SelectButton(name)); // https://answers.unity.com/questions/1142958/buttonselect-doesnt-highlight.html      
+	}
+
+	void Update()
+	{
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			if (Input.GetButtonDown("Cancel") && (name == "LoadGame" || name == "Audiologs"))
+			{
+				transform.parent.Find("Menu").gameObject.SetActive(true);
+				gameObject.SetActive(false);
+			}
+		}
 	}
 
 	IEnumerator SelectButton(string thisName)
@@ -36,7 +40,12 @@ public class MenuSelection : MonoBehaviour
 			case "Audiologs":
 				EventSystem.current.SetSelectedGameObject(transform.Find("Logs/Log 1").gameObject, new BaseEventData(EventSystem.current));
 				break;
+			case "MenuPause":
+				EventSystem.current.SetSelectedGameObject(transform.Find("Resume").gameObject, new BaseEventData(EventSystem.current));
+				break;
+			case "AudiologsPause":
+				EventSystem.current.SetSelectedGameObject(transform.Find("Back").gameObject, new BaseEventData(EventSystem.current));
+				break;
 		}
-
 	}
 }

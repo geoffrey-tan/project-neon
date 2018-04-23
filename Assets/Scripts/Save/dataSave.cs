@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -29,6 +31,14 @@ public class DataSave : MonoBehaviour
 		var currentScene = SceneManager.GetActiveScene().buildIndex;
 
 		if (currentScene == 0)
+		{
+			InsertSavedData();
+		}
+	}
+
+	void OnLevelWasLoaded(int level)
+	{
+		if (level == 0)
 		{
 			InsertSavedData();
 		}
@@ -69,28 +79,5 @@ public class DataSave : MonoBehaviour
 
 		slotThree.Find("Text").GetComponent<TextMeshProUGUI>().text = textTwo;
 		slotThree.Find("Selection").GetComponent<TextMeshProUGUI>().text = textTwo;
-	}
-
-	public void LoadLevel(int saveSlot = 1)
-	{
-		switch (saveSlot)
-		{
-			case 1:
-				LevelTransition.EnterLVL(1);
-				break;
-			case 2:
-				DataSaved();
-				LevelTransition.EnterLVL(1);
-				break;
-		}
-	}
-
-	public void DataSaved()
-	{
-		levelBeaten.Add(2);
-		levelBeaten.Add(3);
-		levelBeaten.Add(4);
-		levelBeaten.Add(5);
-		levelBeaten.Add(6);
 	}
 }
