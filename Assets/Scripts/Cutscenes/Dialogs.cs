@@ -148,6 +148,11 @@ public class Dialogs : MonoBehaviour
 			// Tutorial Follow-Up
 			case "NT-A-1":
 				PlayList.Add(NT_A_1);
+				PlayList.Add(NT_L_1);
+				PlayList.Add(NT_A_2);
+				PlayList.Add(NT_L_2);
+				PlayList.Add(NT_A_3);
+				PlayList.Add(NT_L_3);
 				break;
 		}
 
