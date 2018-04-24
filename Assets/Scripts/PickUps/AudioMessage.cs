@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems; // https://answers.unity.com/questions/1231225/cannot-change-button-interactable-in-a-unityaction.html
+using TMPro;
 
 public class AudioMessage : MonoBehaviour
 {
@@ -14,11 +16,14 @@ public class AudioMessage : MonoBehaviour
 	public AudioClip LV2_1, LV2_2, LV2_3;
 	public AudioClip LV3_1, LV3_2, LV3_3;
 
+	private GameObject UI;
+
 	// Lists
-	public List<AudioClip> PlayList;
+	public static List<AudioClip> PlayList = new List<AudioClip>();
 
 	private void Start()
 	{
+		UI = GameObject.Find("UI").transform.Find("Overlay/AudioPlayer/Text").gameObject;
 		audioSource = GetComponent<AudioSource>();
 	}
 
@@ -74,20 +79,25 @@ public class AudioMessage : MonoBehaviour
 				break;
 		}
 
-		if (PlayList.Count == 1)
+		if (PlayList.Count >= 1)
 		{
 			StartCoroutine(AudioPlayList(PlayList[0].length));
 		}
 	}
 
-	IEnumerator AudioPlayList(float timer)
+	public IEnumerator AudioPlayList(float timer)
 	{
 		audioSource.clip = PlayList[0];
 		audioSource.Play(); // Play first audio
 
+		UI.transform.parent.gameObject.SetActive(true);
+		UI.GetComponent<TextMeshProUGUI>().text = PlayList[0].name;
+
 		yield return new WaitForSeconds(timer + 1f);
 
 		PlayList.RemoveAt(0); // Remove first audio
+
+		UI.transform.parent.gameObject.SetActive(false);
 
 		if (PlayList.Count != 0)
 		{

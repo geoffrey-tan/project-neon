@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4319824379196964}
   - component: {fileID: 65660518726756048}
   - component: {fileID: 114464487928287840}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4008151305216292}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CameraPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 114292824987405364}
   - component: {fileID: 114350359441644492}
   - component: {fileID: 114994538730969764}
+  - component: {fileID: 114175915535847550}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1576,7 +1577,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596471872946372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -23.8, y: 0, z: 1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4767935613966188}
@@ -2032,6 +2033,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114175915535847550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596471872946372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fd0d0828735488ab33632dcd749221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footSteps: {fileID: 0}
+  alert0: {fileID: 8300000, guid: d4440575b1a134e35af09ad7b6b37589, type: 3}
+  gun0: {fileID: 8300000, guid: a527901eb3e104138b99c1c37be1b5da, type: 3}
+  hit0: {fileID: 8300000, guid: ab41b7d6e9b544f3d90b56bd7f095105, type: 3}
+  death0: {fileID: 8300000, guid: c1819035fa6ef432e8fe2ca64a2c2280, type: 3}
 --- !u!114 &114292824987405364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2077,6 +2094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  mindControl: 0
+  invincible: 0
 --- !u!114 &114994538730969764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2096,6 +2115,8 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.2
+  m_Animator: {fileID: 0}
+  m_IsGrounded: 0
 --- !u!120 &120996230996592958
 LineRenderer:
   m_ObjectHideFlags: 1

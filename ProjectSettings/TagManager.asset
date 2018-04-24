@@ -11,6 +11,7 @@ TagManager:
   - Distraction
   - Dialog
   - Safespot
+  - Entrance
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - Enemy
   - Cover
-  - 
+  - Camera
   - 
   - 
   - 

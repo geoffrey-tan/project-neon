@@ -12,6 +12,8 @@ public class AudioEventController : MonoBehaviour
 	public AudioClip footSteps;
 	public AudioClip alert0;
 	public AudioClip gun0;
+	public AudioClip hit0;
+	public AudioClip death0;
 
 	void Start()
 	{
@@ -41,6 +43,12 @@ public class AudioEventController : MonoBehaviour
 				break;
 			case "gun1":
 				target.GetComponent<AudioSource>().PlayOneShot(gun0);
+				break;
+			case "hit0":
+				target.GetComponent<AudioSource>().PlayOneShot(hit0);
+				break;
+			case "death0":
+				target.GetComponent<AudioSource>().PlayOneShot(death0);
 				break;
 		}
 	}

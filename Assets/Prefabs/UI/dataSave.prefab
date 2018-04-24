@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4993162896855162}
   - component: {fileID: 114785556993575034}
+  - component: {fileID: 114919931983603600}
   m_Layer: 0
   m_Name: dataSave
   m_TagString: Untagged
@@ -51,4 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0470a118a2b17412f93c8cef60fdb975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Audio: 0
+--- !u!114 &114919931983603600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850683270702892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88dd5e24751f44f59cf87cf50f95c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
 	// Statics
-	public static bool safeSpot;
-	public static int enemiesInCombat;
+	public static bool safeSpot; // Enemy ignore's player
+	public static int enemiesInCombat; // Is player in combat
 
 	// Components
 	private Transform self;
@@ -22,22 +22,22 @@ public class EnemyAI : MonoBehaviour
 	private EnemyFieldOfView GetEnemyField;
 
 	// Variables
+	public GameObject distractTarget;
+
 	private Coroutine coroutine;
 	private Coroutine patrolCoroutine;
 	private Coroutine coroutineDistracted;
-	private Vector3 playerPosition;
 
-	//public bool mindControl;
-	public bool distracted;
-	public GameObject bullet;
+	private Vector3 playerPosition;
+	public Vector3 searchTarget;
 
 	public float patrolSpeed = 1f;
 	public float searchSpeed = 2.5f;
 	public float combatSpeed = 5f;
 	private float distanceTarget = 10f;
 
-	public Vector3 searchTarget;
-
+	public bool distracted;
+	public bool isStunned;
 	public bool searching;
 	public bool searchWait;
 	public bool combatStart;
@@ -61,17 +61,16 @@ public class EnemyAI : MonoBehaviour
 		enemyGun1 = transform.Find("Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.r/LowerArm.R/Hand.R/EnemyGun (1)").GetComponent<Renderer>();
 
 		WeaponDraw(false);
-		AgentMovement("patrol"); // https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent-destination.html      
 	}
 
 	void Update()
 	{
-		if (safeSpot && enemiesInCombat > 0)
+		if (safeSpot && !distracted)
 		{
 			BacktoPatrol();
 		}
 
-		if (!GetMindControl.mindControl) // Not mindcontrolled
+		if (!GetMindControl.mindControl && !isStunned) // Not mindcontrolled
 		{
 			if (combatStart)
 			{
@@ -79,7 +78,7 @@ public class EnemyAI : MonoBehaviour
 			}
 			else if (distracted)
 			{
-				Distracted(null); // Distracted by object
+				AgentDestination(searchTarget);
 			}
 			else if (searching)
 			{
@@ -91,13 +90,14 @@ public class EnemyAI : MonoBehaviour
 			}
 		}
 
+		// https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
 		playerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 	}
 
 	void Patrol()
 	{
 		WeaponDraw(false);
-		AgentMovement("patrol");
+		AgentMovement("patrol"); // https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent-destination.html  
 
 		Transform[] patrolPoints = transform.parent.Find("PatrolPoints").GetComponentsInChildren<Transform>(); // https://answers.unity.com/questions/763732/getcomponentinparent-how-does-it-work.html
 
@@ -148,17 +148,16 @@ public class EnemyAI : MonoBehaviour
 		}
 		else
 		{
+			enemiesInCombat++;
+
 			searchWait = true;
 			combatStart = true; // Searching -> Combat
 		}
-
 		patrolCoroutine = StartCoroutine(PatrolTimer(20f));
 	}
 
 	public void Combat()
 	{
-		enemiesInCombat++;
-
 		WeaponDraw(true);
 		AgentMovement("combat");
 		AgentDestination(player.transform.position);
@@ -168,7 +167,10 @@ public class EnemyAI : MonoBehaviour
 			player.GetComponent<AudioSource>().Play();
 		}
 
-		StopCoroutine(patrolCoroutine);
+		if (patrolCoroutine != null)
+		{
+			StopCoroutine(patrolCoroutine);
+		}
 	}
 
 	public void Shoot()
@@ -204,25 +206,32 @@ public class EnemyAI : MonoBehaviour
 		shot = false;
 	}
 
-	public void Distracted(GameObject target)
+	public void Distracted(GameObject target = null, bool distractObject = false)
 	{
-		AgentMovement("aim");
-		WeaponDraw(true);
+		distracted = true;
 
-		if (target != null)
+		if (target != null && !distractObject)
 		{
+			AgentMovement("aim");
+			WeaponDraw(true);
+
 			transform.LookAt(target.transform.position); // Mind-Control distract           
+		}
+		else if (distractObject)
+		{
+			AgentMovement("searching");
+			AgentDestination(target.transform.position);
 		}
 
 		if (coroutineDistracted == null)
 		{
-			coroutineDistracted = StartCoroutine(DistractionTimer(10f, target));
+			coroutineDistracted = StartCoroutine(DistractionTimer(10f, target, distractObject));
 		}
 	}
 
-	IEnumerator DistractionTimer(float time, GameObject target = null)
+	IEnumerator DistractionTimer(float time, GameObject target = null, bool distractObject = false)
 	{
-		if (target != null)
+		if (target != null && !distractObject)
 		{
 			target.GetComponent<EnemyFieldOfView>().targetMask = LayerMask.GetMask("Nothing");
 			GetEnemyField.targetMask = LayerMask.GetMask("Nothing");
@@ -232,7 +241,7 @@ public class EnemyAI : MonoBehaviour
 
 		yield return new WaitForSeconds(time);
 
-		if (target != null)
+		if (target != null && !distractObject)
 		{
 			target.GetComponent<EnemyFieldOfView>().targetMask = LayerMask.GetMask("Player");
 		}
@@ -260,9 +269,8 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	void AgentDestination(Vector3 target)
+	public void AgentDestination(Vector3 target)
 	{
-
 		if (!combatStart)
 		{
 			if (Vector3.Distance(self.position, target) > 2f) // Move to Last Seen
@@ -354,6 +362,10 @@ public class EnemyAI : MonoBehaviour
 				anim.SetInteger("Animation", 0);
 				agent.isStopped = true;
 				break;
+			case "stunned":
+				anim.SetInteger("Animation", 5);
+				agent.isStopped = true;
+				break;
 			default:
 				anim.SetInteger("Animation", 0);
 				agent.isStopped = true;
@@ -363,9 +375,16 @@ public class EnemyAI : MonoBehaviour
 
 	public void BacktoPatrol()
 	{
-		enemiesInCombat--;
+		if (safeSpot)
+		{
+			enemiesInCombat = 0;
+		}
+		else if (enemiesInCombat > 0)
+		{
+			enemiesInCombat--;
+		}
 
-		if (player.GetComponent<AudioSource>().isPlaying)
+		if (player.GetComponent<AudioSource>().isPlaying && enemiesInCombat == 0 && PlayerHealth.alive)
 		{
 			player.GetComponent<AudioSource>().Stop();
 		}
@@ -395,13 +414,19 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	IEnumerator PatrolTimer(float time)
+	public IEnumerator PatrolTimer(float time, bool stunned = false)
 	{
+		if (stunned)
+		{
+			isStunned = true;
+			AgentMovement("stunned");
+		}
+
 		yield return new WaitForSeconds(time);
 
-		BacktoPatrol();
+		isStunned = false;
 
-		patrolCoroutine = null;
+		BacktoPatrol();
 	}
 
 	IEnumerator SearchWait(float time)

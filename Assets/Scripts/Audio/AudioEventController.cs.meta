@@ -7,6 +7,8 @@ MonoImporter:
   - footSteps: {fileID: 8300000, guid: 83d117c6e4dea4e3098394482faf5f65, type: 3}
   - alert0: {fileID: 8300000, guid: d4440575b1a134e35af09ad7b6b37589, type: 3}
   - gun0: {fileID: 8300000, guid: a527901eb3e104138b99c1c37be1b5da, type: 3}
+  - hit0: {fileID: 8300000, guid: ab41b7d6e9b544f3d90b56bd7f095105, type: 3}
+  - death0: {fileID: 8300000, guid: c1819035fa6ef432e8fe2ca64a2c2280, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
