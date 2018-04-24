@@ -11,10 +11,14 @@ public class DataSave : MonoBehaviour
 	// Instance
 	public static DataSave instance;
 
-	// Statics
+	// Statics   
+	public static Vector3 lastCheckpoint;
+	public static int lastWaypoint;
+	public static bool help;
+
+	// Lists
 	public static List<int> levelBeaten = new List<int>();
 	public static List<string> collected = new List<string>();
-	public static Vector3 lastCheckpoint;
 
 	void Awake()
 	{
