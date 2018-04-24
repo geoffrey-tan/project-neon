@@ -1716,10 +1716,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15e8551b6d064875a305de3c5884ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distracted: 0
+  distractTarget: {fileID: 0}
+  searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
   combatSpeed: 5
+  distracted: 0
+  isStunned: 0
   searching: 0
   searchWait: 0
   combatStart: 0
@@ -1770,6 +1773,8 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.2
+  m_Animator: {fileID: 0}
+  m_IsGrounded: 0
 --- !u!114 &114307930864457364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1828,6 +1833,8 @@ MonoBehaviour:
   footSteps: {fileID: 8300000, guid: 83d117c6e4dea4e3098394482faf5f65, type: 3}
   alert0: {fileID: 8300000, guid: d4440575b1a134e35af09ad7b6b37589, type: 3}
   gun0: {fileID: 8300000, guid: a527901eb3e104138b99c1c37be1b5da, type: 3}
+  hit0: {fileID: 8300000, guid: ab41b7d6e9b544f3d90b56bd7f095105, type: 3}
+  death0: {fileID: 8300000, guid: c1819035fa6ef432e8fe2ca64a2c2280, type: 3}
 --- !u!136 &136869938718989396
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -46,7 +46,7 @@ public class PlayerCameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		lineCast = Physics.Linecast(transform.position, lookAt.transform.position, hitMask);
+		lineCast = Physics.Linecast(transform.position, lookAt.transform.position, hitMask, QueryTriggerInteraction.Ignore);
 
 		if (lineCast)
 		{

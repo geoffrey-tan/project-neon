@@ -70,7 +70,7 @@ public class EnemyFieldOfView : MonoBehaviour
 			{
 				float distToTarget = Vector3.Distance(transform.position, target.position);
 
-				if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
+				if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask) && !EnemyAI.safeSpot)
 				{
 					visibleTargets.Add(target);
 
@@ -105,12 +105,15 @@ public class EnemyFieldOfView : MonoBehaviour
 	{
 		if (currentTarget != null)
 		{
-			GetMindControl.Mindcontrol(false);
+			if (!currentTarget.transform.GetComponent<EnemyAI>().searching)
+			{
+				GetMindControl.Mindcontrol(false);
 
-			currentTarget.transform.GetComponent<EnemyAI>().Distracted(gameObject);
+				currentTarget.transform.GetComponent<EnemyAI>().Distracted(gameObject);
 
-			transform.GetComponent<EnemyAI>().Distracted(currentTarget.gameObject);
-			transform.LookAt(currentTarget.position);
+				transform.GetComponent<EnemyAI>().Distracted(currentTarget.gameObject);
+				transform.LookAt(currentTarget.position);
+			}
 		}
 	}
 

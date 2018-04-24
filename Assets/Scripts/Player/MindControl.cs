@@ -70,7 +70,7 @@ public class MindControl : MonoBehaviour
 		StartCoroutine(AbilityCooldown(1f));
 	}
 
-	public void Mindcontrol(bool yes, bool stunned = false)
+	public void Mindcontrol(bool yes, bool stunned = false, bool combat = false)
 	{
 		if (yes)
 		{
@@ -110,6 +110,10 @@ public class MindControl : MonoBehaviour
 			if (stunned)
 			{
 				StartCoroutine(GetEnemyAI.PatrolTimer(5f, true));
+			}
+			else if (combat)
+			{
+				GetEnemyAI.combatStart = true;
 			}
 			else if (!GetEnemyAI.distracted)
 			{

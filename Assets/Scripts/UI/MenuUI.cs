@@ -7,17 +7,19 @@ public class MenuUI : MonoBehaviour
 {
 	// GameObjects
 	private GameObject UI;
+	private GameObject audioContainer;
 
 	// Components
 	private AudioSource playerCamera;
 
 	// Variables
-	private bool gameIsPaused;
+	public static bool gameIsPaused;
 
 	private void Start()
 	{
 		UI = GameObject.Find("UI");
 		playerCamera = Camera.main.GetComponent<AudioSource>();
+		audioContainer = GameObject.Find("Audio");
 	}
 
 	private void Update()
@@ -35,8 +37,14 @@ public class MenuUI : MonoBehaviour
 
 		UI.transform.Find("Menu").gameObject.SetActive(!toggle);
 
+		UI.transform.Find("Player Info").gameObject.SetActive(toggle);
+		UI.transform.Find("Overlay").gameObject.SetActive(toggle);
+
 		Dialogs.PlayList.Clear();
 		AudioMessage.PlayList.Clear();
+
+		audioContainer.transform.Find("Dialogs").GetComponent<AudioSource>().Stop();
+		audioContainer.transform.Find("AudioMessage").GetComponent<AudioSource>().Stop();
 
 		if (!toggle)
 		{

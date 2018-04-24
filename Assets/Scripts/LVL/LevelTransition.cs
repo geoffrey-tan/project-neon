@@ -5,6 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour
 {
+	public void LoadLevel(int saveSlot = 1)
+	{
+		switch (saveSlot)
+		{
+			case 1:
+				EnterLVL(1);
+				break;
+			case 2:
+				DataSaved();
+				EnterLVL(1);
+				break;
+		}
+	}
+
+	public void DataSaved()
+	{
+		DataSave.levelBeaten.Add(2);
+		DataSave.levelBeaten.Add(3);
+		DataSave.levelBeaten.Add(4);
+		DataSave.levelBeaten.Add(5);
+		DataSave.levelBeaten.Add(6);
+	}
+
 	public static void EnterLVL(int enter)
 	{
 		if (!DataSave.levelBeaten.Contains(enter))
