@@ -12,6 +12,7 @@ public class MindControl : MonoBehaviour
 	private Collider attackTrigger;
 	private NavMeshAgent navMeshAgent;
 	private Animator anim;
+	private GameObject UI;
 
 	// Scripts
 	private EnemyAI GetEnemyAI;
@@ -30,6 +31,8 @@ public class MindControl : MonoBehaviour
 
 	void Start()
 	{
+		UI = GameObject.Find("UI");
+
 		player = GameObject.Find("Player");
 		cameraPos = transform.Find("CameraPosMindControl");
 		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
@@ -86,6 +89,9 @@ public class MindControl : MonoBehaviour
 			GetCharacter.enabled = true;
 			GetThirdPersonUserControl.enabled = true;
 
+			UI.transform.Find("Overlay/Timer").gameObject.SetActive(true);
+			Timer.timerStart = true;
+
 			if (coroutineMind == null)
 			{
 				coroutineMind = StartCoroutine(MindControlTimer(10f));
@@ -119,6 +125,9 @@ public class MindControl : MonoBehaviour
 			{
 				GetEnemyAI.BacktoPatrol();
 			}
+
+			Timer.timerStart = false;
+			UI.transform.Find("Overlay/Timer").gameObject.SetActive(false);
 
 			coroutineMind = null;
 		}
