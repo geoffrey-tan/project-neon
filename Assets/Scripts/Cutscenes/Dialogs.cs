@@ -29,7 +29,32 @@ public class Dialogs : MonoBehaviour
 	public AudioClip LVL1_L_2, LVL1_R_5; // Live
 
 	// If spare life
+	public AudioClip S_A_1, S_L_1, S_A_2, S_L_2, S_A_3, S_L_3;
 
+	// Level 2 OW
+	public AudioClip VLVL2_S_1;
+
+	// Level 2
+	public AudioClip LVL2_R_4; // Target
+	public AudioClip LVL2_L_1; // Kill
+	public AudioClip LVL2_L_2, LVL2_R_5, LVL2_L_3; // Live
+
+	// Level 3 OW
+	public AudioClip VLVL3_S_1;
+
+	// Level 3
+	public AudioClip LVL3_R_4; // Target
+	public AudioClip LVL3_L_1; // Kill
+	public AudioClip LVL3_L_2, LVL3_R_5; // Live
+
+	// Level Boss OW Liberty
+	public AudioClip VBL_S_1, VBL_A_1, VBL_S_2;
+
+	// Level Boss OW The Resistance
+	public AudioClip VBL_S_3, VBL_L_1, VBL_S_4;
+
+	// Level Boss
+	public AudioClip BL_L_1, BL_S_1, BL_A_1, BL_S_2, BL_A_2, BL_S_3, BL_A_3, BL_L_2;
 
 	// Lists
 	public static List<AudioClip> PlayList = new List<AudioClip>();
