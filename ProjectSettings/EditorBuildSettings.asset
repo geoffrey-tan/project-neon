@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/MainScreen.unity
     guid: e52230e4995704ee6974bc9cdf752313
   - enabled: 1
+    path: Assets/Scenes/Hub/Hub.unity
+    guid: 4ecb1c3dfe7ef4ea7aa7f3e34a87cd1d
+  - enabled: 1
     path: Assets/Scenes/Testing/Testing.unity
     guid: ccf31862a7b2d40d1b31565884d2268c
   m_configObjects: {}

@@ -8,6 +8,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class PlayerHealth : MonoBehaviour
 {
 	public static GameObject player;
+	private GameObject UI;
 
 	// Statics
 	public static bool alive;
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		alive = true;
 
+		UI = GameObject.Find("UI");
 		player = gameObject;
 		anim = GetComponent<Animator>();
 
@@ -140,6 +142,11 @@ public class PlayerHealth : MonoBehaviour
 					break;
 			}
 		}
+
+		if (other.gameObject.CompareTag("Hint"))
+		{
+			UI.transform.Find("Player Info").GetComponent<Info>().Hint(other.name);
+		}
 	}
 
 	void OnTriggerExit(Collider other)
@@ -147,6 +154,11 @@ public class PlayerHealth : MonoBehaviour
 		if (other.gameObject.CompareTag("Safespot"))
 		{
 			EnemyAI.safeSpot = false;
+		}
+
+		if (other.gameObject.CompareTag("Hint"))
+		{
+			UI.transform.Find("Player Info/Controls (Help)").gameObject.SetActive(false);
 		}
 	}
 }
