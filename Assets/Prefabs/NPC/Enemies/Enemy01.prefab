@@ -1894,8 +1894,8 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1024
-  viewRadius: 20
-  viewAngle: 90
+  viewRadius: 12
+  viewAngle: 50
 --- !u!114 &114500990908750286
 MonoBehaviour:
   m_ObjectHideFlags: 1
