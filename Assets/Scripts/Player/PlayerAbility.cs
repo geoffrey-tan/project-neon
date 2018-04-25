@@ -9,7 +9,8 @@ public class PlayerAbility : MonoBehaviour
 	private Animator anim;
 	private Collider attackTrigger;
 	private GameObject self;
-	//private LineRenderer laserLine;
+	private Dialogs GetDialogs;
+	private GameObject laser;
 
 	// Variables
 	private bool abilityCD; // Global ability cooldown
@@ -19,7 +20,8 @@ public class PlayerAbility : MonoBehaviour
 		anim = GetComponent<Animator>();
 		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
 		self = gameObject;
-		//laserLine = transform.Find("Aim").GetComponent<LineRenderer>();
+		laser = transform.Find("Lasers").gameObject;
+		GetDialogs = GameObject.Find("Audio/Dialogs").GetComponent<Dialogs>();
 	}
 
 	void Update() // https://answers.unity.com/questions/20717/inputgetbuttondown-inconsistent.html
@@ -33,6 +35,18 @@ public class PlayerAbility : MonoBehaviour
 		{
 			Distract();
 		}
+
+		//if (sight)
+		//{
+		//    laser.GetComponent<LineRenderer>().enabled = true;
+
+		//    laser.GetComponent<LineRenderer>().SetPosition(0, enemyGun1.position);
+		//    laser.GetComponent<LineRenderer>().SetPosition(1, player.transform.position);
+		//}
+		//else
+		//{
+		//    laser.GetComponent<LineRenderer>().enabled = false;
+		//}
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -63,6 +77,12 @@ public class PlayerAbility : MonoBehaviour
 	{
 		if (distractObject != null)
 		{
+			if (Dialogs.distract) // Tut
+			{
+				Dialogs.distract = false;
+				GetDialogs.PlayDialog("T-5-6");
+			}
+
 			anim.SetTrigger("Distract");
 
 			StartCoroutine(AbilityCooldown(1f));
