@@ -33,22 +33,22 @@ public class Timer : MonoBehaviour
 			{
 				if (((int)timer - 60) < 10)
 				{
-					timerText.text = "Mind-Control \n 1:0" + ((int)timer - 60).ToString(); // https://forum.unity.com/threads/linebreaks-in-string-variables.5784/
+					timerText.text = "1:0" + ((int)timer - 60).ToString(); // https://forum.unity.com/threads/linebreaks-in-string-variables.5784/
 				}
 				else
 				{
-					timerText.text = "Mind-Control \n 1:" + ((int)timer - 60).ToString();
+					timerText.text = "1:" + ((int)timer - 60).ToString();
 				}
 			}
 			else
 			{
 				if ((int)timer < 10)
 				{
-					timerText.text = "Mind-Control \n 0:0" + ((int)timer).ToString();
+					timerText.text = "0:0" + ((int)timer).ToString();
 				}
 				else
 				{
-					timerText.text = "Mind-Control \n 0:" + ((int)timer).ToString();
+					timerText.text = "0:" + ((int)timer).ToString();
 				}
 			}
 		}

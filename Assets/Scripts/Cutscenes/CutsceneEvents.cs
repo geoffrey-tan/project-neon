@@ -16,6 +16,7 @@ public class CutsceneEvents : MonoBehaviour
 	private GameObject playerCam;
 	private GameObject cutscenePlayer;
 	private GameObject cutsceneCam;
+	private GameObject UI;
 
 	// Components
 	private AudioSource messageAudio;
@@ -38,6 +39,7 @@ public class CutsceneEvents : MonoBehaviour
 
 	void Start()
 	{
+		UI = GameObject.Find("UI");
 		player = GameObject.Find("Player");
 		playerCam = GameObject.Find("Player Camera");
 		cutscenePlayer = transform.Find("CutsceneCharacter").gameObject;
@@ -67,8 +69,13 @@ public class CutsceneEvents : MonoBehaviour
 
 			if (playerInput)
 			{
+				UI.transform.Find("Player Info/Decision").gameObject.SetActive(true);
+				list.Clear();
+
 				if (Input.GetButtonDown("Submit"))
 				{
+					playerInput = false;
+
 					decision = 0; // Kill
 					var followUp = transform.Find("FollowUp").GetChild(decision);
 
@@ -78,11 +85,13 @@ public class CutsceneEvents : MonoBehaviour
 				}
 				else if (Input.GetButtonDown("Cancel"))
 				{
+					playerInput = false;
+
 					decision = 1; // Life
+					DataSave.lifesSaved++;
 					var followUp = transform.Find("FollowUp").GetChild(decision);
 
 					list = GetDialogs.PlayDialog(followUp.name);
-
 
 					StartCoroutine(CutsceneDuration(list[1], 2));
 				}
@@ -148,6 +157,8 @@ public class CutsceneEvents : MonoBehaviour
 
 	IEnumerator CutsceneDuration(float time, int waitForInput = 0)
 	{
+		UI.transform.Find("Player Info/Decision").gameObject.SetActive(false);
+
 		yield return new WaitForSeconds(time);
 
 		switch (waitForInput)

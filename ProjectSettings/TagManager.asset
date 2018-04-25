@@ -12,6 +12,7 @@ TagManager:
   - Dialog
   - Safespot
   - Entrance
+  - Hint
   layers:
   - Default
   - TransparentFX

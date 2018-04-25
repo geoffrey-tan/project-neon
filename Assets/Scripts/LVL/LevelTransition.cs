@@ -30,18 +30,16 @@ public class LevelTransition : MonoBehaviour
 
 	public static void EnterLVL(int enter)
 	{
-		if (!DataSave.levelBeaten.Contains(enter))
-		{
-			DataSave.help = false;
-			DataSave.lastCheckpoint = new Vector3(0, 0, 0);
+		DataSave.help = false;
+		DataSave.lastCheckpoint = new Vector3(0, 0, 0);
 
-			SceneManager.LoadScene(enter, LoadSceneMode.Single);
-		}
+		SceneManager.LoadScene(enter, LoadSceneMode.Single);
 	}
 
 	public static void ExitLVL(int exit)
 	{
 		DataSave.levelBeaten.Add(exit);
+		DataSave.nextLevel = exit;
 		DataSave.help = false;
 		DataSave.lastCheckpoint = new Vector3(0, 0, 0);
 

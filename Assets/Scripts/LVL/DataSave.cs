@@ -15,6 +15,8 @@ public class DataSave : MonoBehaviour
 	public static Vector3 lastCheckpoint;
 	public static int lastWaypoint;
 	public static bool help;
+	public static int nextLevel;
+	public static int lifesSaved;
 
 	// Lists
 	public static List<int> levelBeaten = new List<int>();
