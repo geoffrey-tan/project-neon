@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 811a8eba25a550d42a57194b9643ab00
-  m_OcclusionCullingData: {fileID: 36300000, guid: 10ac683df1524c342b76ed3ecc3dca7c,
+  m_SceneGUID: 417051fc5c7d35440a6fb645235871f9
+  m_OcclusionCullingData: {fileID: 36300000, guid: 7bde0ff842cd6488eb840a330d4901a3,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -701,7 +701,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &12104013
@@ -1819,7 +1819,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &54904089
@@ -2982,7 +2982,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &98621310
@@ -3462,6 +3462,54 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 1361241720151090, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425903041723432, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947228209337576, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552152815203000, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385961642723868, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651021868537136, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893031838243448, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032961496677934, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335158264865490, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088886140922654, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200211612606038, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839689209021182, guid: 991c3727466a24d949b299826d217554, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 991c3727466a24d949b299826d217554, type: 2}
   m_IsPrefabParent: 0
@@ -3684,7 +3732,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &129911194
@@ -3870,7 +3918,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &144295575
@@ -4176,7 +4224,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &163821399
@@ -4978,7 +5026,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &206108285
@@ -6042,7 +6090,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &237244346
@@ -6467,7 +6515,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &271772069
@@ -6497,7 +6545,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &272499903
@@ -6527,7 +6575,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &274000437
@@ -6844,8 +6892,8 @@ GameObject:
   m_Name: AC_Stalactites06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &283385896
 Transform:
@@ -8062,7 +8110,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &310404204
@@ -8654,8 +8702,8 @@ GameObject:
   m_Name: AC_Stalactites06 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &330184200
 Transform:
@@ -8976,6 +9024,10 @@ Prefab:
     - target: {fileID: 4766610693643836, guid: f1b35a377d79d4aa181dc243da8bf226, type: 2}
       propertyPath: m_LocalPosition.z
       value: -58.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141921178439282, guid: f1b35a377d79d4aa181dc243da8bf226, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1b35a377d79d4aa181dc243da8bf226, type: 2}
@@ -9364,7 +9416,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &358305714
@@ -10147,7 +10199,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &376935440
@@ -10177,7 +10229,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &377151089
@@ -10605,7 +10657,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &390405143
@@ -11182,7 +11234,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &409314207
@@ -12184,7 +12236,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &445984213
@@ -12214,7 +12266,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &447066046
@@ -12310,7 +12362,7 @@ GameObject:
   m_Name: AC_Stalactites06 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &450101054
@@ -13679,7 +13731,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &505626797
@@ -13712,8 +13764,8 @@ GameObject:
   m_Name: AC_Stalactites06 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &506305768
 Transform:
@@ -13923,7 +13975,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &510411465
@@ -14005,6 +14057,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1743329405}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &510954476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1264670546584964, guid: 6d74200d3c8ca4c18ada9fe73b1fa425,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 510954477}
+  m_Layer: 0
+  m_Name: Waypoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510954477
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4026212987021250, guid: 6d74200d3c8ca4c18ada9fe73b1fa425,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510954476}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -59.74, y: 0, z: 87.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1893048380}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511160190
 GameObject:
@@ -14370,7 +14452,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &520928497
@@ -14431,7 +14513,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &523236195
@@ -14685,7 +14767,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &538805535
@@ -15282,8 +15364,8 @@ GameObject:
   m_Name: AC_Stalactites06 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &567181786
 Transform:
@@ -17186,7 +17268,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &615114712
@@ -17514,7 +17596,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &619531704
@@ -17744,7 +17826,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &627063885
@@ -18239,7 +18321,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &647617789
@@ -19344,7 +19426,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &704290180
@@ -19568,7 +19650,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &719547643
@@ -19655,7 +19737,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &720898052
@@ -20373,7 +20455,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &742083401
@@ -20726,8 +20808,8 @@ GameObject:
   m_Name: AC_Stalactites06 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &762101623
 Transform:
@@ -20960,6 +21042,30 @@ Prefab:
     - target: {fileID: 1381993706068520, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844390383224800, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055175917168946, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643687202824440, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741191873043804, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303327727519374, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842353978592154, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
@@ -22903,8 +23009,8 @@ GameObject:
   m_Name: AC_Stalactites06 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &856600823
 Transform:
@@ -23770,7 +23876,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &895088651
@@ -23913,7 +24019,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &898279802
@@ -24158,7 +24264,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &908096270
@@ -24330,7 +24436,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &919309724
@@ -25213,6 +25319,45 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114437558312621758, guid: 18a07585f150640dfbf8fb3d4b902a6e,
+        type: 2}
+      propertyPath: mindcontrol
+      value: 
+      objectReference: {fileID: 8300000, guid: d26dd76b55a43483fbd41e510bf71f4c, type: 3}
+    - target: {fileID: 114437558312621758, guid: 18a07585f150640dfbf8fb3d4b902a6e,
+        type: 2}
+      propertyPath: distract
+      value: 
+      objectReference: {fileID: 8300000, guid: e6b9902380c6f4a35b6c4046221147b4, type: 3}
+    - target: {fileID: 114437558312621758, guid: 18a07585f150640dfbf8fb3d4b902a6e,
+        type: 2}
+      propertyPath: interact
+      value: 
+      objectReference: {fileID: 8300000, guid: 39156faf05bac40abb275d21fb8f8eb4, type: 3}
+    - target: {fileID: 1759450035481468, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200109233525730, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356861547690238, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426401763672890, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695486869668370, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484157124037574, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
   m_IsPrefabParent: 0
@@ -25229,7 +25374,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &949814888
@@ -25541,7 +25686,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &964468382
@@ -25771,7 +25916,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &975669707
@@ -26384,7 +26529,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &994362039
@@ -26417,8 +26562,8 @@ GameObject:
   m_Name: AC_Stalactites06 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &995623230
 Transform:
@@ -27184,7 +27329,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1016070497
@@ -27453,6 +27598,22 @@ Transform:
   m_Father: {fileID: 467757029}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1029074561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1277572948261828, guid: 6d74200d3c8ca4c18ada9fe73b1fa425,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1893048380}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1030869809
 GameObject:
   m_ObjectHideFlags: 0
@@ -27661,7 +27822,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1047758705
@@ -29033,7 +29194,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1097797023
@@ -29373,7 +29534,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1110987897
@@ -30015,7 +30176,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1164040454
@@ -30601,7 +30762,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1183205157
@@ -31099,7 +31260,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1201787644
@@ -31160,7 +31321,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1205945194
@@ -31381,7 +31542,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1213024784
@@ -31782,7 +31943,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1225372577
@@ -31828,6 +31989,36 @@ Transform:
   m_Children:
   - {fileID: 919309724}
   m_Father: {fileID: 1624702255}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1230639689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1414224944674126, guid: 6d74200d3c8ca4c18ada9fe73b1fa425,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1230639690}
+  m_Layer: 0
+  m_Name: Waypoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1230639690
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4714437738671832, guid: 6d74200d3c8ca4c18ada9fe73b1fa425,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1230639689}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 59.76, y: 0, z: 86.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1893048380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230816157
@@ -32588,7 +32779,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1266879360
@@ -33550,7 +33741,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1283838356
@@ -33816,7 +34007,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1299267750
@@ -33860,7 +34051,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1301884131
@@ -33890,7 +34081,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1303617024
@@ -34239,7 +34430,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1311744370
@@ -34568,7 +34759,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1324907016
@@ -35355,6 +35546,11 @@ Prefab:
     - target: {fileID: 4385073186719370, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 136805086139111690, guid: ebfdb0bf449794e48a9e077797b98fb5,
+        type: 2}
+      propertyPath: m_Radius
+      value: 3.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
@@ -36652,7 +36848,7 @@ GameObject:
   m_Name: AC_Stalactites06b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1408082394
@@ -36709,7 +36905,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1408793204
@@ -37302,7 +37498,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1433712775
@@ -38811,7 +39007,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1494576396
@@ -39502,7 +39698,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1517969719
@@ -39713,7 +39909,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4385073186719370, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 44.2
+      value: 38.37
       objectReference: {fileID: 0}
     - target: {fileID: 4385073186719370, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -39721,7 +39917,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4385073186719370, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 82
+      value: 88.53
       objectReference: {fileID: 0}
     - target: {fileID: 4385073186719370, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
       propertyPath: m_LocalRotation.x
@@ -39747,6 +39943,11 @@ Prefab:
       propertyPath: m_Name
       value: Distraction (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 136805086139111690, guid: ebfdb0bf449794e48a9e077797b98fb5,
+        type: 2}
+      propertyPath: m_Radius
+      value: 3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebfdb0bf449794e48a9e077797b98fb5, type: 2}
   m_IsPrefabParent: 0
@@ -39763,7 +39964,7 @@ GameObject:
   m_Name: AC_Stalactites06 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1521886024
@@ -39793,7 +39994,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1523264476
@@ -40486,7 +40687,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1549037508
@@ -40516,7 +40717,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1550487545
@@ -41059,8 +41260,8 @@ GameObject:
   m_Name: AC_Stalactites06b (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1568809469
 Transform:
@@ -43888,6 +44089,30 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
+    - target: {fileID: 1842353978592154, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643687202824440, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844390383224800, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055175917168946, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741191873043804, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303327727519374, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -43935,7 +44160,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1645869556
@@ -44144,7 +44369,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1651123342
@@ -45087,7 +45312,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1681265037
@@ -45181,7 +45406,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1684869043
@@ -46233,7 +46458,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1708113610
@@ -47311,6 +47536,30 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
+    - target: {fileID: 1643687202824440, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842353978592154, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055175917168946, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741191873043804, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844390383224800, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303327727519374, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -47589,7 +47838,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1742314107
@@ -47754,6 +48003,18 @@ Prefab:
     - target: {fileID: 1053788433143200, guid: f3f24296649e4f64c89e646a2d68064a, type: 2}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053788433143200, guid: f3f24296649e4f64c89e646a2d68064a, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053788433143200, guid: f3f24296649e4f64c89e646a2d68064a, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975491086959316, guid: f3f24296649e4f64c89e646a2d68064a, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3f24296649e4f64c89e646a2d68064a, type: 2}
@@ -48111,7 +48372,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1775258987
@@ -48331,7 +48592,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1781219314
@@ -48593,7 +48854,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1788990830
@@ -49055,7 +49316,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1808333602
@@ -49699,7 +49960,7 @@ GameObject:
   m_Name: SecondDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1821401224
@@ -50238,7 +50499,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1843345043
@@ -50809,7 +51070,7 @@ GameObject:
   m_Name: ThumbDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1871573138
@@ -51111,7 +51372,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1890219464
@@ -51159,64 +51420,22 @@ Transform:
   m_Father: {fileID: 1960054105}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1893048379
-Prefab:
+--- !u!4 &1893048380
+Transform:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714437738671832, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 84.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714437738671832, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 61.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026212987021250, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 89
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026212987021250, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -59.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6d74200d3c8ca4c18ada9fe73b1fa425, type: 2}
-  m_IsPrefabParent: 0
+  m_PrefabParentObject: {fileID: 4971184306956254, guid: 6d74200d3c8ca4c18ada9fe73b1fa425,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029074561}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1230639690}
+  - {fileID: 510954477}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1898082610
 Transform:
   m_ObjectHideFlags: 0
@@ -52806,7 +53025,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1985452917
@@ -52918,7 +53137,7 @@ GameObject:
   m_Name: SecondDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1987536117
@@ -54589,7 +54808,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &2041484894
@@ -54762,7 +54981,7 @@ GameObject:
   m_Name: FirstDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &2043409471
@@ -55854,7 +56073,7 @@ GameObject:
   m_Name: FirstDistal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &2099976924
@@ -56184,7 +56403,7 @@ GameObject:
   m_Name: ThumbDistal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &2117694384
@@ -57254,8 +57473,8 @@ GameObject:
   m_Name: AC_Stalactites06 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2146948497
 Transform:
