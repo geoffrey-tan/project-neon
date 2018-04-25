@@ -10,6 +10,7 @@ public class AttackTrigger : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Enemy") && transform.parent.GetComponent<MindControl>() == null && !mindControl && !other.GetComponent<EnemyAI>().combatStart)
 		{
+			transform.parent.GetComponent<AudioEventController>().PlaySFX("mindcontrol");
 			mindControl = true;
 			other.gameObject.GetComponent<MindControl>().mindControl = true;
 		}
@@ -19,13 +20,14 @@ public class AttackTrigger : MonoBehaviour
 			if (!other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().securedLock)
 			{
 				OpenDoor(other);
+				transform.parent.GetComponent<AudioEventController>().PlaySFX("interact");
 			}
 			else
 			{
 				if (transform.parent.GetComponent<MindControl>() != null)
 				{
 					other.gameObject.transform.parent.Find("door_2").GetComponent<DoorController>().securedLock = false;
-
+					transform.parent.GetComponent<AudioEventController>().PlaySFX("interact");
 					OpenDoor(other);
 				}
 			}

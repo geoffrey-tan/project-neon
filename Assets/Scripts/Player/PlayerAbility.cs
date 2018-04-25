@@ -77,6 +77,8 @@ public class PlayerAbility : MonoBehaviour
 	{
 		if (distractObject != null)
 		{
+			GetComponent<AudioEventController>().PlaySFX("distract");
+
 			if (Dialogs.distract) // Tut
 			{
 				Dialogs.distract = false;

@@ -14,6 +14,9 @@ public class AudioEventController : MonoBehaviour
 	public AudioClip gun0;
 	public AudioClip hit0;
 	public AudioClip death0;
+	public AudioClip mindcontrol;
+	public AudioClip distract;
+	public AudioClip interact;
 
 	void Start()
 	{
@@ -45,10 +48,19 @@ public class AudioEventController : MonoBehaviour
 				target.GetComponent<AudioSource>().PlayOneShot(gun0);
 				break;
 			case "hit0":
-				target.GetComponent<AudioSource>().PlayOneShot(hit0);
+				player.GetComponent<AudioSource>().PlayOneShot(hit0);
 				break;
 			case "death0":
-				target.GetComponent<AudioSource>().PlayOneShot(death0);
+				player.GetComponent<AudioSource>().PlayOneShot(death0);
+				break;
+			case "mindcontrol":
+				player.GetComponent<AudioSource>().PlayOneShot(mindcontrol);
+				break;
+			case "distract":
+				player.GetComponent<AudioSource>().PlayOneShot(distract);
+				break;
+			case "interact":
+				player.GetComponent<AudioSource>().PlayOneShot(interact);
 				break;
 		}
 	}
