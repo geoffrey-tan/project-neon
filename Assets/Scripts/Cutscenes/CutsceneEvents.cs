@@ -141,6 +141,7 @@ public class CutsceneEvents : MonoBehaviour
 			playerCam.SetActive(true);
 			cutsceneCam.SetActive(false);
 
+			EnemyAI.safeSpot = false;
 			gameObject.SetActive(false); // Disable trigger
 		}
 	}
