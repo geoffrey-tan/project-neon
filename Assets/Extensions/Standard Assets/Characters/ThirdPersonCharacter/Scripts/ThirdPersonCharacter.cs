@@ -187,6 +187,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 #endif
 			// 0.1f is a small offset to start the ray from inside the character
 			// it is also good to note that the transform position in the sample assets is at the base of the character
+
+			var b = GetComponent<Collider>().bounds.extents.x;
+			var c = new Vector3(b + transform.position.x, transform.position.y, transform.position.z);
+			Debug.DrawLine(c + (Vector3.up * 0.1f), c + (Vector3.up * 0.1f) + (Vector3.down * m_GroundCheckDistance));
+
+			var a = Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance);
+
+
+
 			if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
 			{
 				m_GroundNormal = hitInfo.normal;
