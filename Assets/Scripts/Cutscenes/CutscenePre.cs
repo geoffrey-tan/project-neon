@@ -17,7 +17,21 @@ public class CutscenePre : MonoBehaviour
 
 		nextLevel = DataSave.nextLevel;
 
-		PlayVideo(nextLevel + 1);
+		if (nextLevel == 5)
+		{
+			if (DataSave.lifesSaved >= 2)
+			{
+				PlayVideo(6);
+			}
+			else
+			{
+				PlayVideo(7);
+			}
+		}
+		else
+		{
+			PlayVideo(nextLevel + 1);
+		}
 	}
 
 	public void PlayVideo(int level)
