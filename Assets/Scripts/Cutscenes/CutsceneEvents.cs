@@ -80,9 +80,19 @@ public class CutsceneEvents : MonoBehaviour
 					decision = 0; // Kill
 					var followUp = transform.Find("FollowUp").GetChild(decision);
 
-					list = GetDialogs.PlayDialog(followUp.name);
 
-					StartCoroutine(CutsceneDuration(list[1], 2));
+
+					if (SceneManager.GetActiveScene().buildIndex == 2)
+					{
+						StartCoroutine(CutsceneDuration(0f, 2));
+					}
+					else
+					{
+						list = GetDialogs.PlayDialog(followUp.name);
+						StartCoroutine(CutsceneDuration(list[1], 2));
+					}
+
+
 				}
 				else if (Input.GetButtonDown("Cancel"))
 				{
@@ -92,9 +102,19 @@ public class CutsceneEvents : MonoBehaviour
 					DataSave.lifesSaved++;
 					var followUp = transform.Find("FollowUp").GetChild(decision);
 
-					list = GetDialogs.PlayDialog(followUp.name);
 
-					StartCoroutine(CutsceneDuration(list[1], 2));
+
+					if (SceneManager.GetActiveScene().buildIndex == 2)
+					{
+						StartCoroutine(CutsceneDuration(0f, 2));
+					}
+					else
+					{
+						list = GetDialogs.PlayDialog(followUp.name);
+						StartCoroutine(CutsceneDuration(list[1], 2));
+					}
+
+
 				}
 			}
 		}
@@ -121,7 +141,9 @@ public class CutsceneEvents : MonoBehaviour
 			}
 			else if (decisionCutscene)
 			{
+
 				StartCoroutine(CutsceneDuration(list[1], 1)); // Wait for player input
+
 			}
 			else if (finalCutscene)
 			{
