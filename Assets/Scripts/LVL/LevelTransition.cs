@@ -31,6 +31,7 @@ public class LevelTransition : MonoBehaviour
 	public static void EnterLVL(int enter)
 	{
 		DataSave.help = false;
+		EnemyAI.safeSpot = false;
 		DataSave.lastCheckpoint = new Vector3(0, 0, 0);
 
 		SceneManager.LoadScene(enter, LoadSceneMode.Single);
@@ -38,7 +39,7 @@ public class LevelTransition : MonoBehaviour
 
 	public static void ExitLVL(int exit)
 	{
-		if (exit == 2)
+		if (exit == 6)
 		{
 			DataSave.levelBeaten.Add(exit);
 			DataSave.nextLevel = 0;
