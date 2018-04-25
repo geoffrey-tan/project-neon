@@ -143,6 +143,13 @@ public class PlayerHealth : MonoBehaviour
 			}
 		}
 
+		if (other.gameObject.CompareTag("Instance"))
+		{
+			var exit = other.transform.parent.Find("End");
+
+			player.transform.position = exit.position;
+		}
+
 		if (other.gameObject.CompareTag("Hint"))
 		{
 			UI.transform.Find("Player Info").GetComponent<Info>().Hint(other.name);

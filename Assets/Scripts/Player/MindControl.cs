@@ -19,6 +19,7 @@ public class MindControl : MonoBehaviour
 	private ThirdPersonCharacter GetCharacter;
 	private ThirdPersonUserControl GetThirdPersonUserControl;
 	private PlayerCameraController GetPlayerCameraController;
+	private Dialogs GetDialogs;
 
 	// Assets
 	public RuntimeAnimatorController animatorController;
@@ -45,6 +46,7 @@ public class MindControl : MonoBehaviour
 		GetCharacter = transform.GetComponent<ThirdPersonCharacter>();
 		GetThirdPersonUserControl = transform.GetComponent<ThirdPersonUserControl>();
 		GetPlayerCameraController = Camera.main.GetComponent<PlayerCameraController>();
+		GetDialogs = GameObject.Find("Audio/Dialogs").GetComponent<Dialogs>();
 	}
 
 	void Update()
@@ -52,6 +54,12 @@ public class MindControl : MonoBehaviour
 		if (mindControl)
 		{
 			Mindcontrol(true);
+
+			if (Dialogs.mindControl) // Tut
+			{
+				Dialogs.mindControl = false;
+				GetDialogs.PlayDialog("T-5-9");
+			}
 
 			if (Input.GetButtonDown("Interact") && !abilityCD) // Interact
 			{

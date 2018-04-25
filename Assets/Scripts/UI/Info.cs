@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Info : MonoBehaviour
 {
-	public Sprite crouch, distract, interact, jump, mind;
+	public Sprite crouch, distract, interact, jump, mind, guardID;
 
 	public void Hint(string name)
 	{
@@ -27,6 +27,9 @@ public class Info : MonoBehaviour
 				break;
 			case "Mind":
 				transform.Find("Controls (Help)").GetComponent<Image>().sprite = mind;
+				break;
+			case "GuardID":
+				transform.Find("Controls (Help)").GetComponent<Image>().sprite = guardID;
 				break;
 		}
 	}

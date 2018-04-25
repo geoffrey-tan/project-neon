@@ -369,6 +369,7 @@ MonoBehaviour:
   BL_A_3: {fileID: 8300000, guid: 74f34877035b445db9f81e0fd416e673, type: 3}
   BL_L_2: {fileID: 8300000, guid: 87574fe3fd104446c9a1c1483fcb5124, type: 3}
   list: []
+  finalCutscene: 0
 --- !u!114 &114077607644916560
 MonoBehaviour:
   m_ObjectHideFlags: 1

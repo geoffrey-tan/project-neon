@@ -13,6 +13,7 @@ TagManager:
   - Safespot
   - Entrance
   - Hint
+  - Instance
   layers:
   - Default
   - TransparentFX

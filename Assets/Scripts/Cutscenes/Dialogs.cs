@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Dialogs : MonoBehaviour
 {
+	//Statics
+	public static bool mindControl;
+	public static bool distract;
+
 	// Components
 	private AudioSource audioSource;
 
@@ -117,6 +121,7 @@ public class Dialogs : MonoBehaviour
 				break;
 			case "T-5-5": // Distract            
 				CutsceneEvents.interact = true;
+				distract = true;
 				PlayList.Add(T2_5_5);
 				break;
 
@@ -124,7 +129,8 @@ public class Dialogs : MonoBehaviour
 			case "T-5-6": // Distract -> Completed           
 				PlayList.Add(T2_5_6);
 				break;
-			case "T-5-7": // Mind-Control            
+			case "T-5-7": // Mind-Control  
+				mindControl = true;
 				PlayList.Add(T2_5_7);
 				break;
 			case "T-5-9": // Mind-Control -> Completed            

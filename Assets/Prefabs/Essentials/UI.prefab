@@ -3657,6 +3657,7 @@ MonoBehaviour:
   interact: {fileID: 21300000, guid: d85ce799c72254727bb4f950cec3fa6c, type: 3}
   jump: {fileID: 21300000, guid: a26b83841e7ca47f0a692a36ad3bd6dc, type: 3}
   mind: {fileID: 21300000, guid: 01a263cb4976947d98b9ea3c1c15d508, type: 3}
+  guardID: {fileID: 21300000, guid: a2b2abd9ffc0b4e59aaa5f76ca241a5d, type: 3}
 --- !u!114 &114329059308080806
 MonoBehaviour:
   m_ObjectHideFlags: 1
