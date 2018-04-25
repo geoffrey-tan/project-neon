@@ -85,7 +85,7 @@ public class Dialogs : MonoBehaviour
 
 		switch (dialog)
 		{
-			// Prologue
+			// ### Prologue ###
 			case "P-1": // Cutscene            
 				PlayList.Add(P1_1);
 				PlayList.Add(P1_2);
@@ -94,7 +94,7 @@ public class Dialogs : MonoBehaviour
 				PlayList.Add(P1_5);
 				break;
 
-			// Tutorial
+			// ### Tutorial ###
 			case "T-1": // Start            
 				CutsceneEvents.interact = true;
 				PlayList.Add(T2_1_1);
@@ -141,11 +141,13 @@ public class Dialogs : MonoBehaviour
 				CutsceneEvents.interact = true;
 				PlayList.Add(T2_5_13);
 				break;
+
+			// ### Tutorial Target ###
 			case "T-5-14": // Cutscene Target            
 				PlayList.Add(T2_5_14);
 				break;
 
-			// Tutorial Follow-Up
+			// ### Target Follow-Up ###
 			case "NT-A-1":
 				PlayList.Add(NT_A_1);
 				PlayList.Add(NT_L_1);
@@ -153,6 +155,79 @@ public class Dialogs : MonoBehaviour
 				PlayList.Add(NT_L_2);
 				PlayList.Add(NT_A_3);
 				PlayList.Add(NT_L_3);
+				break;
+
+			// ### Level 1 Prologue ###
+			case "VLVL1_S_1":
+				PlayList.Add(VLVL1_S_1);
+				PlayList.Add(VLVL1_L_1);
+				PlayList.Add(VLVL1_S_2);
+				PlayList.Add(VLVL1_S_3);
+				break;
+
+			// ### Level 1 Target ###
+			case "LVL1_R_4": // Cutscene Target            
+				PlayList.Add(LVL1_R_4);
+				break;
+
+			// ### Target Follow-Up ###
+			case "LVL1_L_1": // Kill            
+				PlayList.Add(LVL1_L_1);
+				break;
+			case "LVL1_L_2": // Live           
+				PlayList.Add(LVL1_L_2);
+				PlayList.Add(LVL1_R_5);
+				break;
+
+			// ### Level 2 Prologue ###
+			case "VLVL2-S-1":
+				PlayList.Add(VLVL2_S_1);
+				break;
+
+			// ### Level 2 Target ###
+			case "LVL2_R_4": // Cutscene Target            
+				PlayList.Add(LVL2_R_4);
+				break;
+
+			// ### Target Follow-Up ###
+			case "LVL2_L_1": // Kill            
+				PlayList.Add(LVL2_L_1);
+				break;
+			case "LVL2_L_2": // Live           
+				PlayList.Add(LVL2_L_2);
+				PlayList.Add(LVL2_R_5);
+				PlayList.Add(LVL2_L_3);
+				break;
+
+			// ### Level 3 Prologue ###
+			case "VLVL3_S_1":
+				PlayList.Add(VLVL3_S_1);
+				break;
+
+			// ### Level 3 Target ###
+			case "LVL3_R_4": // Cutscene Target            
+				PlayList.Add(LVL3_R_4);
+				break;
+
+			// ### Target Follow-Up ###
+			case "LVL3_L_1": // Kill            
+				PlayList.Add(LVL3_L_1);
+				break;
+			case "LVL3_L_2": // Live           
+				PlayList.Add(LVL3_L_2);
+				PlayList.Add(LVL3_R_5);
+				break;
+
+			// ### Level Boss Prologue ###
+			case "BL_L_1":
+				PlayList.Add(BL_L_1);
+				PlayList.Add(BL_S_1);
+				PlayList.Add(BL_A_1);
+				PlayList.Add(BL_S_2);
+				PlayList.Add(BL_A_2);
+				PlayList.Add(BL_S_3);
+				PlayList.Add(BL_A_3);
+				PlayList.Add(BL_L_2);
 				break;
 		}
 

@@ -11,6 +11,7 @@ public class EnemyFieldOfView : MonoBehaviour
 	// Scripts
 	private EnemyAI GetEnemyAI;
 	private MindControl GetMindControl;
+	private Laz0r GetLaz0R;
 
 	// Variables
 	public RaycastHit lastSeen;
@@ -26,6 +27,8 @@ public class EnemyFieldOfView : MonoBehaviour
 
 		GetEnemyAI = transform.GetComponent<EnemyAI>();
 		GetMindControl = transform.GetComponent<MindControl>();
+		GetLaz0R = transform.GetComponent<Laz0r>();
+
 	}
 
 	IEnumerator FindTargetsWithDelay(float delay)
@@ -49,6 +52,7 @@ public class EnemyFieldOfView : MonoBehaviour
 	void FindVisibleTargets()
 	{
 		visibleTargets.Clear();
+		GetLaz0R.sight = false;
 
 		if (GetMindControl.mindControl)
 		{
@@ -73,6 +77,8 @@ public class EnemyFieldOfView : MonoBehaviour
 				if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask) && !EnemyAI.safeSpot)
 				{
 					visibleTargets.Add(target);
+
+					GetLaz0R.sight = true;
 
 					if (GetMindControl.mindControl)
 					{

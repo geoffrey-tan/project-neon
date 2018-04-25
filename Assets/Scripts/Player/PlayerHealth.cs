@@ -103,6 +103,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		yield return new WaitForSeconds(5f);
 
+		DataSave.help = true;
 		EnemyAI.safeSpot = false;
 		alive = true;
 
