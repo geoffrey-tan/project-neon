@@ -29,6 +29,7 @@ public class CutsceneEvents : MonoBehaviour
 
 	// Variables
 	public bool decisionCutscene; // True = Cutscene waits for player input
+	public bool finalCutscene;
 	private bool playerInput;
 	private int decision;
 	public float cameraSpeed = 1f;
@@ -122,6 +123,11 @@ public class CutsceneEvents : MonoBehaviour
 			{
 				StartCoroutine(CutsceneDuration(list[1], 1)); // Wait for player input
 			}
+			else if (finalCutscene)
+			{
+				DataSave.theEnd = true;
+				StartCoroutine(CutsceneDuration(list[1], 2)); // The end
+			}
 			else
 			{
 				StartCoroutine(CutsceneDuration(list[1])); // Plays all audio
@@ -161,6 +167,8 @@ public class CutsceneEvents : MonoBehaviour
 
 		yield return new WaitForSeconds(time);
 
+		var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
 		switch (waitForInput)
 		{
 			case 0:
@@ -171,8 +179,6 @@ public class CutsceneEvents : MonoBehaviour
 				playerInput = true;
 				break;
 			case 2:
-				var sceneIndex = SceneManager.GetActiveScene().buildIndex;
-
 				LevelTransition.ExitLVL(sceneIndex);
 				break;
 		}

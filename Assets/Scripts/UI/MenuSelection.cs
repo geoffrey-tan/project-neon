@@ -20,6 +20,14 @@ public class MenuSelection : MonoBehaviour
 				transform.parent.Find("Menu").gameObject.SetActive(true);
 				gameObject.SetActive(false);
 			}
+			if (DataSave.theEnd)
+			{
+				if ((Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel")) && name == "Menu")
+				{
+					transform.parent.Find("EndGame").gameObject.SetActive(false);
+				}
+			}
+
 		}
 	}
 

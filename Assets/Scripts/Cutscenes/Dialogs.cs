@@ -63,6 +63,7 @@ public class Dialogs : MonoBehaviour
 	// Variables
 	public Coroutine coroutine;
 	private string currentDialog;
+	public bool finalCutscene;
 
 	void Start()
 	{
@@ -220,6 +221,8 @@ public class Dialogs : MonoBehaviour
 
 			// ### Level Boss Prologue ###
 			case "BL_L_1":
+				finalCutscene = true;
+
 				PlayList.Add(BL_L_1);
 				PlayList.Add(BL_S_1);
 				PlayList.Add(BL_A_1);
@@ -261,7 +264,17 @@ public class Dialogs : MonoBehaviour
 		}
 		else
 		{
-			coroutine = null;
+			if (!finalCutscene)
+			{
+				coroutine = null;
+			}
+			else
+			{
+
+			}
+
 		}
+
+
 	}
 }
