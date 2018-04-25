@@ -3224,7 +3224,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4255,7 +4255,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4865,6 +4865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -6629,7 +6630,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9650,7 +9651,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11615,7 +11616,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12078,7 +12079,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12291,6 +12292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -13545,7 +13547,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14083,6 +14085,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -20.6
       objectReference: {fileID: 0}
+    - target: {fileID: 137593179715148840, guid: 9b7d3f4408459414e93547af51127c12,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -15209,6 +15216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -17169,6 +17177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -19260,7 +19269,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21974,6 +21983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -23031,6 +23041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -23410,6 +23421,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -14.9
       objectReference: {fileID: 0}
+    - target: {fileID: 137593179715148840, guid: 9b7d3f4408459414e93547af51127c12,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -27365,6 +27381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -32826,6 +32843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -37862,6 +37880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -39869,6 +39888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -40942,6 +40962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -45114,6 +45135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -45619,7 +45641,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46071,7 +46093,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -51179,7 +51201,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52176,6 +52198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -54190,6 +54213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -56183,6 +56207,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 137593179715148840, guid: 9b7d3f4408459414e93547af51127c12,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -57516,7 +57545,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63097,6 +63126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -65245,6 +65275,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 8.8
       objectReference: {fileID: 0}
+    - target: {fileID: 137593179715148840, guid: 9b7d3f4408459414e93547af51127c12,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -66892,7 +66927,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67980,6 +68015,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -2.76
       objectReference: {fileID: 0}
+    - target: {fileID: 137593179715148840, guid: 9b7d3f4408459414e93547af51127c12,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7d3f4408459414e93547af51127c12, type: 2}
   m_IsPrefabParent: 0
@@ -71645,6 +71685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -73308,7 +73349,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73959,7 +74000,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74424,7 +74465,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74989,6 +75030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -80700,7 +80742,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 98ec97c496fac904a811768eda3cc3f2, type: 2}
+  - {fileID: 2100000, guid: 2c0e9469a5d9e6a478ddf21ce5f449c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
