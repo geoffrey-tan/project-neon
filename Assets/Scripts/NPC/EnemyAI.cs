@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class EnemyAI : MonoBehaviour
 
 	// Variables
 	public GameObject distractTarget;
+	public Material material;
 
 	private Coroutine coroutine;
 	private Coroutine patrolCoroutine;
@@ -61,6 +63,11 @@ public class EnemyAI : MonoBehaviour
 		enemyGun1 = transform.Find("Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.r/LowerArm.R/Hand.R/EnemyGun (1)").GetComponent<Renderer>();
 
 		WeaponDraw(false);
+
+		if (DataSave.lifesSaved >= 2 && SceneManager.GetActiveScene().buildIndex == 6)
+		{
+			transform.Find("Cybersoldier").GetComponent<MeshRenderer>().material = material;
+		}
 	}
 
 	void Update()

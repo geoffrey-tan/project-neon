@@ -88,6 +88,7 @@ public class CutsceneEvents : MonoBehaviour
 					playerInput = false;
 
 					decision = 1; // Life
+					DataSave.lifesSaved++;
 					var followUp = transform.Find("FollowUp").GetChild(decision);
 
 					list = GetDialogs.PlayDialog(followUp.name);
