@@ -38,11 +38,23 @@ public class LevelTransition : MonoBehaviour
 
 	public static void ExitLVL(int exit)
 	{
-		DataSave.levelBeaten.Add(exit);
-		DataSave.nextLevel = exit;
-		DataSave.help = false;
-		DataSave.lastCheckpoint = new Vector3(0, 0, 0);
+		if (exit == 2)
+		{
+			DataSave.levelBeaten.Add(exit);
+			DataSave.nextLevel = 0;
+			DataSave.help = false;
+			DataSave.lastCheckpoint = new Vector3(0, 0, 0);
 
-		SceneManager.LoadScene("Hub", LoadSceneMode.Single);
+			SceneManager.LoadScene(0, LoadSceneMode.Single);
+		}
+		else
+		{
+			DataSave.levelBeaten.Add(exit);
+			DataSave.nextLevel = exit;
+			DataSave.help = false;
+			DataSave.lastCheckpoint = new Vector3(0, 0, 0);
+
+			SceneManager.LoadScene("Hub", LoadSceneMode.Single);
+		}
 	}
 }

@@ -64,14 +64,19 @@ public class EnemyAI : MonoBehaviour
 
 		WeaponDraw(false);
 
-		if (SceneManager.GetActiveScene().buildIndex == 2)
+		if (DataSave.lifesSaved >= 2 && SceneManager.GetActiveScene().buildIndex == 6)
 		{
-			transform.Find("Cybersoldier").GetComponent<MeshRenderer>().material = material;
+			var a = transform.Find("CyberSoldier");
+			var b = a.GetComponent<Renderer>();
+
+			b.material = material;
 		}
 	}
 
 	void Update()
 	{
+
+
 		if (safeSpot && !distracted)
 		{
 			BacktoPatrol();

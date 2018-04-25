@@ -17,6 +17,7 @@ public class DataSave : MonoBehaviour
 	public static bool help;
 	public static int nextLevel;
 	public static int lifesSaved;
+	public static bool theEnd;
 
 	// Lists
 	public static List<int> levelBeaten = new List<int>();
@@ -44,7 +45,11 @@ public class DataSave : MonoBehaviour
 
 	void OnLevelWasLoaded(int level)
 	{
-		if (level == 0)
+		if (level == 0 && theEnd)
+		{
+			GameObject.Find("Canvas").transform.Find("EndGame").gameObject.SetActive(true);
+		}
+		else if (level == 0)
 		{
 			InsertSavedData();
 		}
