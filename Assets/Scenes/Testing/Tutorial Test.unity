@@ -6989,6 +6989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -9471,6 +9472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -12405,6 +12407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -18759,6 +18762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -22716,6 +22720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -23500,6 +23505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -36300,6 +36306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
@@ -38990,7 +38997,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1684413098}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 66.1, y: 0, z: -19.8}
+  m_LocalPosition: {x: 66.84, y: 0, z: -19.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1687174435}
@@ -39027,7 +39034,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 0, z: 10}
+  m_Size: {x: 6, y: 0, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1685577697
 GameObject:
@@ -42578,6 +42585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distractTarget: {fileID: 0}
+  material: {fileID: 0}
   searchTarget: {x: 0, y: 0, z: 0}
   patrolSpeed: 1
   searchSpeed: 2.5
