@@ -10,7 +10,7 @@ public class PlayerAbility : MonoBehaviour
 	private Collider attackTrigger;
 	private GameObject self;
 	private Dialogs GetDialogs;
-	private GameObject laser;
+	//private GameObject laser;
 
 	// Variables
 	private bool abilityCD; // Global ability cooldown
@@ -20,7 +20,7 @@ public class PlayerAbility : MonoBehaviour
 		anim = GetComponent<Animator>();
 		attackTrigger = transform.Find("AttackTrigger").GetComponent<Collider>();
 		self = gameObject;
-		laser = transform.Find("Lasers").gameObject;
+		//laser = transform.Find("Lasers").gameObject;
 		GetDialogs = GameObject.Find("Audio/Dialogs").GetComponent<Dialogs>();
 	}
 
