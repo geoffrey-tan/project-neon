@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 1120740982}
   - component: {fileID: 1120740981}
   - component: {fileID: 1120740980}
+  - component: {fileID: 1120740984}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -298,6 +299,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1120740984
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120740979}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1548722731
 Prefab:
   m_ObjectHideFlags: 0
@@ -482,7 +578,7 @@ VideoPlayer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2134390491}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 99b1c076f05284d9b91efd0cd8023831, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ba258b1382550684ab01b625b8dd1d7e, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1120740982}
@@ -494,9 +590,9 @@ VideoPlayer:
   m_AspectRatio: 3
   m_DataSource: 0
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 1
   m_TargetAudioSources:
-  - {fileID: 0}
+  - {fileID: 1120740984}
   m_DirectAudioVolumes:
   - 1
   m_Url: 
@@ -519,12 +615,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292292df1ea5b4ee78a8e69dbba6f169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prologue: {fileID: 32900000, guid: 99b1c076f05284d9b91efd0cd8023831, type: 3}
-  level1: {fileID: 32900000, guid: b723e3a97482843ce8a22b35cadecaac, type: 3}
-  level2: {fileID: 32900000, guid: b713c4634b1454e6cb019d473a7aa12e, type: 3}
-  level3: {fileID: 32900000, guid: 54b77d21fa7db461ea807ad1438e2b40, type: 3}
-  bossRes: {fileID: 32900000, guid: eb6370d601bdf48c1a62ed301ed64798, type: 3}
-  bossLib: {fileID: 32900000, guid: 2ede99d5893e54e5298ed08ae705be55, type: 3}
+  prologue: {fileID: 32900000, guid: ba258b1382550684ab01b625b8dd1d7e, type: 3}
+  level1: {fileID: 32900000, guid: ca2bf6ddb734f024a9072c183e22f7be, type: 3}
+  level2: {fileID: 32900000, guid: 7523ce584c419aa43bf7a16b927c2d7c, type: 3}
+  level3: {fileID: 32900000, guid: 35e3cda05fed0854ebe9c67c82158936, type: 3}
+  bossRes: {fileID: 32900000, guid: cec5810a367edc848a243c0844d1129e, type: 3}
+  bossLib: {fileID: 32900000, guid: 3bd236e6ffdefcd49a91502b6c80ec12, type: 3}
   nextLevel: 0
 --- !u!1001 &2143654068
 Prefab:

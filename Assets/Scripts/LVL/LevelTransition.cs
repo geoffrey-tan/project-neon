@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +21,8 @@ public class LevelTransition : MonoBehaviour
 
 	public void DataSaved()
 	{
+        DataSave.nextLevel = 5;
+        DataSave.collected.Add("AudioMessage (T1)");
 		DataSave.levelBeaten.Add(2);
 		DataSave.levelBeaten.Add(3);
 		DataSave.levelBeaten.Add(4);
