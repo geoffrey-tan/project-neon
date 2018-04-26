@@ -103,9 +103,11 @@ public class PlayerHealth : MonoBehaviour
 
 	IEnumerator RestartLevel()
 	{
-		yield return new WaitForSeconds(5f);
 
 		DataSave.help = true;
+		yield return new WaitForSeconds(5f);
+
+
 		EnemyAI.safeSpot = false;
 		alive = true;
 

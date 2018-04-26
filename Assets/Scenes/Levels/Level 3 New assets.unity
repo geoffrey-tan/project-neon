@@ -8310,6 +8310,11 @@ Prefab:
       propertyPath: interact
       value: 
       objectReference: {fileID: 8300000, guid: 39156faf05bac40abb275d21fb8f8eb4, type: 3}
+    - target: {fileID: 23001126535574458, guid: 18a07585f150640dfbf8fb3d4b902a6e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18a07585f150640dfbf8fb3d4b902a6e, type: 2}
   m_IsPrefabParent: 0

@@ -24,6 +24,7 @@ public class MenuUI : MonoBehaviour
 
 	private void Update()
 	{
+		Debug.Log(CutsceneEvents.cutcenePlaying);
 		if (Input.GetButtonDown("Cancel") && !CutsceneEvents.cutcenePlaying)
 		{
 			Pause(gameIsPaused);

@@ -64,13 +64,15 @@ public class EnemyAI : MonoBehaviour
 
 		WeaponDraw(false);
 
-		if (DataSave.lifesSaved >= 2 && SceneManager.GetActiveScene().buildIndex == 6)
-		{
-			var a = transform.Find("CyberSoldier");
-			var b = a.GetComponent<Renderer>();
+		//if (DataSave.lifesSaved >= 2 && SceneManager.GetActiveScene().buildIndex == 6)
+		//{
+		//	var a = transform.Find("CyberSoldier");
+		//	var b = a.GetComponent<Renderer>();
 
-			b.material = material;
-		}
+		//	b.material = material;
+		//}
+
+		safeSpot = false;
 	}
 
 	void Update()

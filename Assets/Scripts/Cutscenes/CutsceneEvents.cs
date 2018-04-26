@@ -201,6 +201,9 @@ public class CutsceneEvents : MonoBehaviour
 				playerInput = true;
 				break;
 			case 2:
+				cutscene = false;
+				cutsceneDone = true;
+				cutcenePlaying = false;
 				LevelTransition.ExitLVL(sceneIndex);
 				break;
 		}
