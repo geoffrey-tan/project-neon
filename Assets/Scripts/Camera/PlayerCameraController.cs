@@ -19,8 +19,8 @@ public class PlayerCameraController : MonoBehaviour
 
 	private float currentX;
 	private float currentY = -40f;
-	private float sensitivityX = 2f;
-	private float sensitivityY = 1f;
+	private float sensitivityX = 4f;
+	private float sensitivityY = 2f;
 	private bool adjust;
 
 	private float increase = 1.7f; // Speed
@@ -38,8 +38,8 @@ public class PlayerCameraController : MonoBehaviour
 
 	void Update()
 	{
-		currentX += Input.GetAxis("Mouse X") * sensitivityX;
-		currentY += Input.GetAxis("Mouse Y") * sensitivityY;
+		currentX += Input.GetAxis("Camera X") * sensitivityX;
+		currentY += Input.GetAxis("Camera Y") * sensitivityY;
 
 		currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
 	}

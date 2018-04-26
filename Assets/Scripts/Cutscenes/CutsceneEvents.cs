@@ -94,7 +94,7 @@ public class CutsceneEvents : MonoBehaviour
 
 
 				}
-				else if (Input.GetButtonDown("Cancel"))
+				else if (Input.GetButtonDown("Mind-Control"))
 				{
 					playerInput = false;
 
